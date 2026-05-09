@@ -1,4 +1,0 @@
-interface:
-  display_name: "文章配图"
-  short_description: "为 Nexus 文章生成头图与正文插图，并回写 article_with_images.md"
-  default_prompt: "Use this skill when a Nexus article has reached Stage 3 and needs illustrations generated from 03-成稿/article_source.md. Ask the user only for the desired visual style, then generate and insert images into 04-配图/ and 03-成稿/article_with_images.md."

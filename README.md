@@ -6,22 +6,19 @@ source collection, publication packaging, and multi-channel distribution.
 ## What Lives Here
 
 - `publications/` — one folder per article or campaign package.
-- `workflows/` — reusable content, illustration, and distribution skills.
-- `publishing/` — non-secret platform profiles and publishing preferences.
+- `skills/` — reusable content, illustration, and distribution skills.
+- `distribution/` — publishing profiles and distribution records that are not per-article.
 - `ganfan-knowledge-vault/` — migrated knowledge vault and long-term source notes.
 - `assets/` — reusable media assets.
-- `sources/` — shared raw source collections not tied to one publication yet.
-- `ops/` — operational notes, account/process runbooks without secrets.
-- `docs/` — architecture and governance notes for this media workspace.
+- `docs/` — strategy, workflow, and operational notes.
 
 ## Default Article Flow
 
-1. Collect source material in `publications/YYYY-MM-DD-topic/00-source/`.
-2. Write the angle and promise in `01-brief/brief.md`.
-3. Produce the canonical draft in `02-draft/article.md`.
-4. Adapt channel versions in `03-channels/`.
-5. Add optional cover or screenshots in `04-assets/` only when they help.
-6. Record publishing status in `05-publish/publish-log.md`.
+1. Write the article direction in `publications/YYYY-MM-DD-topic/brief.md`.
+2. Preserve raw material in `sources/`.
+3. Write channel-ready drafts in `drafts/x.md` and `drafts/sorrycode.md`.
+4. Add optional cover or screenshots in `assets/` only when they help.
+5. Record publishing status, links, metrics, and feedback in `publish.md`.
 
 The current strategy is documented in `docs/strategy/sorrycode-content-funnel-v1.md`. The lightweight production workflow is documented in `docs/workflows/lightweight-article-workflow.md`.
 

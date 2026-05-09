@@ -121,7 +121,7 @@ X 图片最多 1 张。不要为了显得完整硬塞多张图。
 默认产出路径：
 
 ```text
-publications/YYYY-MM-DD-topic/04-assets/cover/
+publications/YYYY-MM-DD-topic/assets/cover/
 ```
 
 默认只生成 1 张封面。除非用户要求，不生成多张正文插图。

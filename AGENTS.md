@@ -32,15 +32,14 @@ Create one folder per article under `publications/`:
 
 ```text
 publications/YYYY-MM-DD-topic-slug/
-├── 00-source/          # original notes, links, screenshots, transcripts
-├── 01-brief/brief.md   # audience, angle, promise, factual boundary
-├── 02-draft/article.md # long-form canonical draft
-├── 03-channels/        # platform-specific outputs
-│   ├── sorrycode.md
-│   ├── wechat.md
-│   └── x-thread.md
-├── 04-assets/        # optional cover, screenshots, generated images
-└── 05-publish/publish-log.md
+├── brief.md       # audience, angle, promise, factual boundary
+├── sources/       # original notes, links, screenshots, transcripts
+├── drafts/        # channel-ready drafts
+│   ├── x.md
+│   └── sorrycode.md
+├── assets/        # optional cover, screenshots, generated images
+├── outputs/       # rendered channel artifacts
+└── publish.md     # status, links, metrics, feedback
 ```
 
 ## Lightweight Workflow
@@ -50,20 +49,23 @@ Default workflow docs live in:
 - `docs/strategy/sorrycode-content-funnel-v1.md`
 - `docs/workflows/lightweight-article-workflow.md`
 
-Use the old Stage 0-5 flow only for deep long-form work, multi-source research, heavy illustration, WeChat rendering, or automated publishing.
+Use the standard publication layout for all ordinary media work. If a project needs
+deep research, WeChat rendering, or automation, design that package explicitly
+instead of reviving the old numbered article layout.
 
 ## Workflow Assets
 
-- `workflows/skills/` contains reusable agent skills and automation workflows.
-- `publishing/profiles/` contains non-secret platform preferences.
+- `skills/` contains reusable agent skills and automation workflows.
+- `distribution/profiles/` contains non-secret platform preferences.
 - `ganfan-knowledge-vault/` contains the migrated knowledge vault content and templates.
 - `assets/` contains reusable media files.
 
 ## Distribution Rules
 
-- `02-draft/article.md` is the long-form content truth source for each publication.
-- Channel files under `03-channels/` may adapt format, length, title, and CTA, but must not change factual claims.
-- Every shipped item needs a `05-publish/publish-log.md` with target channel, status, URL if available, and follow-up notes.
+- `brief.md` defines the audience, angle, funnel target, and factual boundary.
+- `sources/` preserves raw material and private notes; drafts must not invent claims outside these sources.
+- `drafts/x.md` and `drafts/sorrycode.md` are the channel-ready outputs.
+- Every shipped item needs a `publish.md` with target channel, status, URL if available, and follow-up notes.
 - For X/Twitter, prefer concise threads with one clear claim per post.
 - For SorryCode, prefer concrete beginner value, direct steps, and links to relevant docs.
 

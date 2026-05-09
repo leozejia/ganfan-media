@@ -1,0 +1,4 @@
+interface:
+  display_name: "文章配图"
+  short_description: "为 GanFan / SorryCode 文章判断是否需要封面、截图或正文图"
+  default_prompt: "Use this skill when a publication package needs a cover, screenshot, or article visual. Read brief.md and drafts/, decide whether an image is useful, then write the image brief and assets under assets/."

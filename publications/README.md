@@ -4,12 +4,16 @@ Each publication or campaign gets its own folder:
 
 ```text
 YYYY-MM-DD-topic-slug/
-├── 00-source/
-├── 01-brief/brief.md
-├── 02-draft/article.md
-├── 03-channels/
-└── 05-publish/publish-log.md
+├── brief.md
+├── sources/
+├── drafts/
+│   ├── x.md
+│   └── sorrycode.md
+├── assets/
+├── outputs/
+└── publish.md
 ```
 
-Use `02-draft/article.md` as the canonical draft. Channel files may adapt format,
-but should not change the factual core.
+Use `brief.md` to define the audience, angle, and factual boundary. Keep raw
+material in `sources/`. Put final channel drafts under `drafts/`. Put rendered
+channel artifacts under `outputs/`. Record shipped links and feedback in `publish.md`.

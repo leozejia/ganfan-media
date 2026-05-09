@@ -9,9 +9,9 @@ The old `ganfan-nexus/mantle/media_substrate` path is retired.
 
 ## Migrated Capabilities
 
-- Content production skills from `workflows/skills/`
-- Distribution automation from `workflows/skills/ganfan-distribution-agent/`
-- Publishing profiles from `publishing/profiles/`
+- Content production skills from `skills/`
+- Distribution automation from `skills/ganfan-distribution-agent/`
+- Publishing profiles from `distribution/profiles/`
 - Reusable media assets from `assets/`
 - Knowledge vault material from `ganfan-knowledge-vault/`
 
