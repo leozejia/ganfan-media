@@ -1,123 +1,104 @@
 ---
 name: ganfan-article-illustrator
-version: 2.2.0
-description: 为 Nexus 内容创作中心文章执行 Stage 3 配图：读取 `03-成稿/article_source.md`，识别头图与正文插图点，在关键节点只向用户询问本次视觉风格，然后调用 Tuzi 生成图片并写回 `04-配图/` 与 `03-成稿/article_with_images.md`。用于文章头图、正文插图、配图插入与配图风格化。
-author: GanFan Nexus
+version: 3.0.0
+description: GanFan Media 轻量封面与文章视觉编排。默认只判断是否需要图片；需要封面、海报、文章图或教程截图时，优先调用 sorrycode-image2。普通 X 线程默认不配图，不再强制为每篇文章生成正文插图。
+author: GanFan Media
 ---
 
-# GanFan Article Illustrator
+# GanFan Article Illustrator v3
 
 ## 定位
 
-- 只负责 `ganfan-content-production` Stage 3：配图生成与插入
-- 不负责排版、平台格式适配、分发或发布
-- 风格真相源是当前目录下的 `styles/*.yaml`
+这个 Skill 只负责内容视觉判断和封面 brief，不再默认给文章生成一组正文插图。
 
-## 何时使用
+默认判断：这篇内容是否真的需要图片。
 
-在以下场景触发：
+## 图片使用原则
 
-- `03-成稿/article_source.md` 已经定稿，准备进入配图阶段
-- 需要为文章生成头图与正文插图
-- 需要把图片引用写回 `03-成稿/article_with_images.md`
+图片只服务两个目标：
 
-## 输入
+1. 提高点击。
+2. 帮助理解或操作。
 
-- `03-成稿/article_source.md`
+不为了显得完整而插图。
 
-## 输出
+## 默认结论
 
-- `04-配图/_outline.md`
-- `04-配图/prompts/`
-- `04-配图/styles_used.yaml`
-- `04-配图/*.png`
-- `03-成稿/article_with_images.md`
+普通 X 线程默认不需要图片。
 
-## 运行真相
+只有这些情况才建议生成图片：
 
-- 项目目录结构以 `ganfan-content-production` workflow 为准
-- 风格库：`styles/*.yaml`
-- Prompt 模板：`prompts/cover-prompt-template.md`、`prompts/inline-prompt-template.md`
-- Tuzi / model / size 等低层细节：按需读取 `references/tuzi-runtime.md`
-- Prompt 结构框架：按需读取 `references/google-prompting-framework.md`
+- 标题需要一个强封面来提高打开率。
+- 文章主题是视觉、设计、图片、PPT、视频。
+- SorryCode 站内教程需要截图帮助小白操作。
+- 用户明确要求封面、海报、插图或截图。
 
-## 默认规则
+## 输出结构
 
-- 默认静默执行；常规只问一次风格选择
-- 默认配图密度为 `balanced`
-- 默认生成 1 张可复用头图 + 若干正文配图；不要为封面额外再生一套图，除非用户明确要求
-- 头图默认采用宽幅、中心安全区、边缘不放关键信息的构图
-- 所有图片默认禁止：文字、水印、logo、品牌标识、艺术家签名、版权信息
-- Prompt 优先表达隐喻和概念，不做字面翻译
-- 不修改 `article_source.md`
+如果需要图片，输出到：
 
-## 常规流程
+```text
+04-assets/cover/
+├── cover-brief.md
+├── prompt.txt
+└── sorrycode-image2/
+```
 
-1. 读取 `03-成稿/article_source.md`
-2. 识别头图位与正文插图位
-3. 询问用户本次使用的风格
-4. 读取所选 `styles/<name>.yaml`
-5. 头图优先使用 `prompts/cover-prompt-template.md`，正文图优先使用 `prompts/inline-prompt-template.md`
-6. 必要时读取 `references/google-prompting-framework.md` 补足 Prompt 结构
-7. 生成 `04-配图/_outline.md` 与 `04-配图/prompts/`
-8. 调用 Tuzi 生成并下载图片到 `04-配图/`
-9. 将图片引用插入文章，输出 `03-成稿/article_with_images.md`
+如果不需要图片，在 `01-brief/brief.md` 里记录：
 
-## 唯一常规交互
+```text
+Image decision: no image needed.
+Reason: ...
+```
 
-在实际生图前，只问这一句：
+## 封面 brief
 
-`这次配图使用哪种风格？可选：叙事手账-信息可视化、流动的凝视-极简封面、简约典雅艺术、奇思妙想手账画师、简约手绘线稿。`
+生成图片前先写 `cover-brief.md`。
 
-如果用户没有指定：
+必须包含：
 
-- 深度长文 / 商业分析 / 技术科普：优先推荐 `叙事手账-信息可视化`
-- 头图感更强、叙事更重的文章：优先推荐 `流动的凝视-极简封面`
+- 文章标题
+- 目标读者
+- 点击理由
+- 主视觉隐喻
+- 画面主体
+- 色彩和气质
+- 禁止出现的内容
 
-## 异常才问
+## 封面风格
 
-只有以下情况再追加询问：
+参考方向：高完成度商业 Banner，而不是文章插画。需要写封面 prompt 时，读取 `references/x-cover-banner-patterns.md` 和 `prompts/cover-prompt-template.md`。
 
-- 用户要求自定义新风格
-- 所选风格与文章气质明显冲突
-- Prompt 命中品牌名称、文字、水印、版权等风险词
-- 生成结果明显失真、裁切风险过高、或无法满足正文插图需求
+优先特征：
 
-## 风格库
+- 一个主视觉，不堆元素。
+- 一个强标题，不写满屏字。
+- 高对比、强留白、手机端可读。
+- 画面表达问题或结果，不解释细节。
+- 质感干净，像认真设计过的产品广告。
 
-当前内置风格：
+## SorryCode Image2
 
-- `叙事手账-信息可视化`
-- `流动的凝视-极简封面`
-- `简约典雅艺术`
-- `奇思妙想手账画师`
-- `简约手绘线稿`
+生成图片时调用 `sorrycode-image2`。
 
-新增风格时：
+默认参数由 `sorrycode-image2` 决定。不要在这里重复 API 细节。
 
-- 在 `styles/` 新增一个 YAML 文件
-- 只写 `name`、`description`、`keywords`、`negative`
-- 不要把新风格说明堆回主 `SKILL.md`
+默认只生成 1 张封面图。除非用户明确要求，不生成多张变体。
 
 ## Do / Don't
 
 **Do**
 
-- 让 `article_with_images.md` 成为唯一发布输入
-- 保持头图和正文插图属于同一套视觉语言
-- 将风格选择留给用户，将其余实现细节留在 skill 内部
+- 先判断是否需要图。
+- 只做对点击或理解有帮助的图。
+- 用 `sorrycode-image2` 保存 prompt、请求和响应诊断。
+- 保持封面像广告 Banner，有明确主视觉。
 
 **Don't**
 
-- 不要把密度、比例、provider、theme 当成常规询问项
-- 不要把排版或发布职责塞回这个 skill
-- 不要单独维护平台封面资产，除非用户明确要求
-- 不要把参考资料、API 手册、历史变更堆在主 `SKILL.md`
-
-## 资源加载
-
-- 正常执行时，不要默认加载 `references/tuzi-runtime.md` 或 `references/google-prompting-framework.md`
-- 只有在修改 provider、排查生成失败、核对模型或尺寸能力时，才加载 `references/tuzi-runtime.md`
-- 只有在需要生成或修正 Prompt 结构时，才加载 `references/google-prompting-framework.md`
-- 只有在用户选定或要求推荐风格后，才读取对应的 `styles/*.yaml`
-- 生成头图时优先读取 `prompts/cover-prompt-template.md`；生成正文图时优先读取 `prompts/inline-prompt-template.md`
+- 不要为每篇文章强制配图。
+- 不要默认生成多张正文插图。
+- 不要继续使用旧 Tuzi 链路。
+- 不要把低层 API 参数写进这个 Skill。
+- 不要在 X 文章里堆多张图。
+- 不要照搬外部作者提示词；只吸收其广告 Banner 方法和构图原则。

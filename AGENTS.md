@@ -17,6 +17,15 @@ preserve source material, and keep distribution records traceable.
 - Do not commit private credentials, cookies, account tokens, API keys, or provider secrets.
 - Local secret files must use `.local.*`, `.env`, or `.secret.*` names and stay ignored.
 
+## Default Operating Strategy
+
+- X builds trust; SorryCode lowers action cost.
+- Each X article must teach one real thing before it points to SorryCode.
+- SorryCode carries copy-ready commands, beginner steps, troubleshooting, and Skills installation.
+- Use one low-pressure CTA per article; do not turn every post into an ad.
+- Images are optional. Use them only as a cover hook or when a screenshot helps the user act.
+- When an article needs generated visuals, use `sorrycode-image2` and save outputs under the publication folder.
+
 ## Standard Publication Layout
 
 Create one folder per article under `publications/`:
@@ -30,8 +39,18 @@ publications/YYYY-MM-DD-topic-slug/
 │   ├── sorrycode.md
 │   ├── wechat.md
 │   └── x-thread.md
+├── 04-assets/        # optional cover, screenshots, generated images
 └── 05-publish/publish-log.md
 ```
+
+## Lightweight Workflow
+
+Default workflow docs live in:
+
+- `docs/strategy/sorrycode-content-funnel-v1.md`
+- `docs/workflows/lightweight-article-workflow.md`
+
+Use the old Stage 0-5 flow only for deep long-form work, multi-source research, heavy illustration, WeChat rendering, or automated publishing.
 
 ## Workflow Assets
 

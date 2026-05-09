@@ -20,7 +20,10 @@ source collection, publication packaging, and multi-channel distribution.
 2. Write the angle and promise in `01-brief/brief.md`.
 3. Produce the canonical draft in `02-draft/article.md`.
 4. Adapt channel versions in `03-channels/`.
-5. Record publishing status in `05-publish/publish-log.md`.
+5. Add optional cover or screenshots in `04-assets/` only when they help.
+6. Record publishing status in `05-publish/publish-log.md`.
+
+The current strategy is documented in `docs/strategy/sorrycode-content-funnel-v1.md`. The lightweight production workflow is documented in `docs/workflows/lightweight-article-workflow.md`.
 
 ## Migration Note
 

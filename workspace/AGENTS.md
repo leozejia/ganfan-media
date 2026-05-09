@@ -1,26 +1,33 @@
-# Agent Instructions (Marketing Lead)
+# Agent Instructions (GanFan Media)
 
 ## Role
 
-- Owner: `Architect`
-- Role file: `/Users/zejiawu/Projects/ganfan-nexus/org/agent-core/marketing/workspace/ROLE.md`
-- Governance kernel source: `/Users/zejiawu/Projects/ganfan-nexus/org/agent-core/RUNTIME-KERNEL.md`
-- Full governance truth: `/Users/zejiawu/Projects/ganfan-nexus/org/agent-core/GOVERNANCE-STANDARD.md`
+This workspace is the operating context for GanFan / SorryCode media work.
+Agents entering here act as operating officers: clarify the audience, shape the content angle, package channel outputs, and keep publishing records traceable.
 
-## Always-On Rules
+## Current Strategy
 
-- Stay in marketing lead scope: market judgment, brand expression, growth strategy, and content execution quality.
-- `org/agent-core/`, formal product docs, and decision docs are truth; `.runtime/` holds runtime state, records, and materialized copies.
-- Simple single-truth low-risk tasks may proceed directly.
-- Pause for minimal clarification when multiple truth sources, architecture or runtime changes, delete or install or restart or migrate or external send, or unclear intent are involved.
-- Do not call drafted, generated, staged, or planned output “done” or “delivered.”
-- Content workflow detail belongs in workflow skills and product assets, not in startup bootstrap text.
-- Runtime owns skills, tools, sandbox, and approvals. Read deeper docs only when the task actually needs them.
-- For browser tasks, do not use plain `agent-browser open` on logged-in sites. First attach the shared automation Chrome; port is configured by environment variable `NEXUS_SHARED_CHROME_DEBUG_PORT` (default 56888); if it is not available, route to a workflow/helper that owns the shared profile instead of spawning a fresh browser.
+- X builds trust; SorryCode lowers action cost.
+- Every X article must teach one real thing before pointing to SorryCode.
+- SorryCode carries the complete beginner path: commands, screenshots, troubleshooting, and Skills installation.
+- Default workflow is lightweight. Use the old heavy Stage workflow only for deep research or full publishing automation.
+- Images are optional. Use them as cover hooks or operational screenshots, not as mandatory decoration.
+- Generated images should use `sorrycode-image2`.
 
-## Read On Demand
+## Canonical References
 
-- `/Users/zejiawu/Projects/ganfan-nexus/org/agent-core/marketing/workspace/ROLE.md` for role boundary and long-term strategy context.
-- `workspace/skills/` as the first runtime skill truth for marketing tasks.
-- `TOOLS.md` for local tool routing and drafting preferences.
-- `MEMORY.md` for durable strategy and style constraints.
+Read these first for media work:
+
+- `../docs/strategy/sorrycode-content-funnel-v1.md`
+- `../docs/workflows/lightweight-article-workflow.md`
+- `../workflows/skills/`
+
+## Skill Truth
+
+Canonical reusable skills live in `../workflows/skills/`.
+
+`workspace/skills/` is a migrated compatibility copy from the old Nexus workspace. Do not update it first. If a skill changes, update `../workflows/skills/` and only mirror into `workspace/skills/` when compatibility requires it.
+
+## Browser / Chrome Tasks
+
+Use browser automation only when the task requires logged-in pages, screenshots, or live publishing verification. Do not make public claims from a private browser view unless the source can be cited or captured into the publication source folder.
