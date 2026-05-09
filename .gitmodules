@@ -1,0 +1,4 @@
+[submodule "ganfan-knowledge-vault"]
+	path = ganfan-knowledge-vault
+	url = ssh://git@nas4f744d.tailec2f8a.ts.net:2222/linxiverse/ganfan-knowledge-vault.git
+	branch = main

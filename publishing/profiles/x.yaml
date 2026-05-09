@@ -1,0 +1,5 @@
+defaults:
+  publish_method: browser
+browser:
+  chrome_profile_path: ""
+  chrome_path: ""
