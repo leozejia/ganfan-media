@@ -1,17 +1,12 @@
 # 如何高效利用上下文
 
-这篇是给 SorryCode 内容站的候选长文，不直接改 `sorrycode-content`。建议未来放在：
+这篇是早期候选长文。当前公开 docs 已经硬切为：
 
 ```text
-/docs/agent-infra/context-economics
+/docs/agent-infra/context-management
 ```
 
-也可以拆成两篇：
-
-```text
-/docs/agent-infra/context-economics
-/docs/village/context-checkpoint
-```
+后续不要直接发布这份长文。需要继续扩展时，优先在现有 `context-management` 页面上补充，或者另开一篇更具体的任务教程。
 
 ## 先理解上下文
 
@@ -279,6 +274,8 @@ docs/
 
 ## 下一步
 
-- 代码项目：先看 [AGENTS.md](/docs/agent-infra/agents-md)
+- 先看 [长期上下文怎么管理](/docs/agent-infra/context-management)
+- 代码项目：再看 [AGENTS.md](/docs/agent-infra/agents-md)
+- Claude Code 项目：再看 [CLAUDE.md](/docs/agent-infra/claude-md)
 - 设计项目：先看 [DESIGN.md](/docs/agent-infra/design-md)
 - 第一次读项目：先看 [读懂一个项目](/docs/village/read-project)

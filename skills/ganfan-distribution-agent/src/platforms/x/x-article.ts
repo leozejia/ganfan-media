@@ -211,7 +211,7 @@ export async function publishArticle(options: ArticleOptions): Promise<void> {
       }
     };
 
-    const waitForPreviewReady = async (timeoutMs = 180_000): Promise<PreviewReadiness> => {
+    const waitForPreviewReady = async (timeoutMs = 15_000): Promise<PreviewReadiness> => {
       const start = Date.now();
       let lastFingerprint = '';
       let lastState: PreviewReadiness = { previewHref: null, nextEnabled: false, uploading: false, statusText: '' };
@@ -681,13 +681,12 @@ export async function publishArticle(options: ArticleOptions): Promise<void> {
     }, { sessionId });
     await sleep(1500);
 
-    const previewReady = await waitForPreviewReady();
-
     // Open Preview
     console.log('[x-article] Opening preview...');
     const previewSelectors = JSON.stringify(I18N_SELECTORS.previewButton);
     const previewLabels = JSON.stringify(['Preview', '预览', 'プレビュー', '미리보기']);
-    const previewAction = await cdp.send<{ result: { value: { href: string | null; clicked: boolean } } }>('Runtime.evaluate', {
+    const openPreview = async (): Promise<{ href: string | null; clicked: boolean }> => {
+      const previewAction = await cdp.send<{ result: { value: { href: string | null; clicked: boolean } } }>('Runtime.evaluate', {
       expression: `(() => {
         const selectors = ${previewSelectors};
         const labels = ${previewLabels}.map(label => label.toLowerCase());
@@ -731,8 +730,17 @@ export async function publishArticle(options: ArticleOptions): Promise<void> {
       })()`,
       returnByValue: true,
     }, { sessionId });
+      return previewAction.result.value;
+    };
 
-    const previewResult = previewAction.result.value;
+    let previewReady = await readPreviewReadiness();
+    let previewResult = await openPreview();
+
+    if (!previewResult?.href && !previewResult?.clicked) {
+      previewReady = await waitForPreviewReady();
+      previewResult = await openPreview();
+    }
+
     if (!previewResult?.href && !previewResult?.clicked && previewReady.uploading) {
       console.log(`[x-article] Preview still not ready: ${previewReady.statusText || 'media upload still in progress'}`);
     }

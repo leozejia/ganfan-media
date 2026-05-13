@@ -18,6 +18,17 @@ Access date unless noted: 2026-05-12.
   - Use to explain "cache makes repeated stable context cheaper."
   - Do not claim cache improves semantic quality.
 
+### OpenAI API Pricing
+
+- URL: `https://openai.com/api/pricing/`
+- Access date: 2026-05-13
+- Supports:
+  - GPT-5.5 cached input is listed at `$0.50 / 1M tokens`.
+  - Cached input is cheaper than regular input, but not free.
+- Public-use boundary:
+  - Use only as current pricing context for the article's "cheap still costs money at scale" point.
+  - If publishing later, re-check pricing because model prices can change.
+
 ### OpenAI Conversation State
 
 - URL: `https://developers.openai.com/api/docs/guides/conversation-state`
@@ -104,13 +115,56 @@ Access date unless noted: 2026-05-12.
 
 ## Local Sources
 
+### Operator Observation: SorryCode Usage
+
+- Source: user-provided operating note on 2026-05-13.
+- Supports:
+  - The author used Codex heavily while building and operating SorryCode.
+  - Long Codex sessions can preserve enough detail to make "just keep the session alive" feel attractive.
+  - The author's own usage showed very high cache hit rates, but the bill still became meaningful because cached input still has a price at scale.
+  - The author now asks agents to produce a handoff before releasing a long session.
+- Public-use boundary:
+  - Safe to use as first-person anecdote.
+  - Avoid publishing precise private platform usage shares, exact internal token totals, account IDs, provider logs, screenshots, or full billing details.
+
+### SorryCode Context Management
+
+- Local path: `/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/context-management/zh.md`
+- Public URL target: `https://sorrycode.com/docs/agent-infra/context-management`
+- Supports:
+  - SorryCode docs now explain long sessions, cache, context files, and handoffs as separate things.
+  - The doc gives a copy-ready handoff prompt and a default rule for stable context versus temporary evidence.
+- Fit note:
+  - Primary CTA for this X article because the piece is cross-runtime and not limited to Codex or Claude Code.
+
 ### SorryCode AGENTS.md
 
 - Local path: `/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/agents-md/zh.md`
 - Public URL target: `https://sorrycode.com/docs/agent-infra/agents-md`
 - Supports:
-  - SorryCode docs already explain `AGENTS.md` as Codex's project instruction file.
-  - The doc warns not to put secrets, one-off tasks, stale paths, or unrelated background into `AGENTS.md`.
+  - SorryCode docs explain `AGENTS.md` as Codex's project instruction file.
+  - The doc warns not to put chat history, one-off tasks, stale paths, secrets, or abandoned conclusions into `AGENTS.md`.
+- Fit note:
+  - Useful supporting link for Codex users, but too narrow as the main CTA.
+
+### SorryCode CLAUDE.md
+
+- Local path: `/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/claude-md/zh.md`
+- Public URL target: `https://sorrycode.com/docs/agent-infra/claude-md`
+- Supports:
+  - SorryCode docs explain `CLAUDE.md` as Claude Code's memory / instruction file.
+  - The doc says to maintain durable project facts and avoid temporary session state, one-off tasks, stale commands, long meeting notes, and secrets.
+- Fit note:
+  - Useful supporting link for Claude Code users, but too narrow as the main CTA.
+
+### SorryCode Agent Infrastructure Overview
+
+- Local path: `/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/overview/zh.md`
+- Public URL target: `https://sorrycode.com/docs/agent-infra/overview`
+- Supports:
+  - Overview now routes users by problem: long sessions, Codex rules, Claude Code memory, DESIGN.md, MCP, and Skills.
+- Fit note:
+  - Secondary landing page for readers who want the broader agent infrastructure map.
 
 ### SorryCode DESIGN.md
 

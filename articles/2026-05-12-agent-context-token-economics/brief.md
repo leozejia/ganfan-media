@@ -23,6 +23,12 @@ Long context feels powerful, but every extra token competes for attention and ca
 The core line:
 
 ```text
+便宜，不等于划算。
+```
+
+Secondary line:
+
+```text
 上下文是资产，也是负债。
 ```
 
@@ -33,26 +39,31 @@ Teach one practical mental model:
 - stable context should live in files;
 - temporary context should be distilled or discarded;
 - cache only makes repeated context cheaper, not cleaner;
+- high cache hit rate is not the same as a healthy or economical session;
 - long sessions should be managed by checkpoints, not blindly "养会话";
 - when the task changes, start a clean session with a short handoff.
 
 ## SorryCode Action
 
-Light CTA to SorryCode docs that help users move context out of chat history and into reusable files:
+Light CTA to SorryCode docs that help users move context out of chat history and into reusable files. Use the new context-management page as the public landing page for this X article because the article is cross-runtime, not Codex-only:
 
 ```text
+https://sorrycode.com/docs/agent-infra/context-management
+https://sorrycode.com/docs/agent-infra/overview
 https://sorrycode.com/docs/agent-infra/agents-md
 https://sorrycode.com/docs/agent-infra/design-md
+https://sorrycode.com/docs/agent-infra/claude-md
 https://sorrycode.com/docs/village/read-project
 ```
 
-Do not edit `sorrycode-content` in this task. Keep media drafts and proposed structure here.
+`AGENTS.md` and `CLAUDE.md` are relevant supporting docs, but the main CTA should stay on `context-management`; otherwise the article looks Codex-only or Claude-only.
 
 ## Factual Boundary
 
 Verified from official / high-confidence sources on 2026-05-12:
 
 - OpenAI prompt caching reuses exact prompt prefixes, starts at supported prompt lengths, and is designed to lower latency and input cost for repeated stable prefixes.
+- OpenAI public pricing lists GPT-5.5 cached input at `$0.50 / 1M tokens` as of 2026-05-13.
 - OpenAI conversation state docs say previous input tokens in a response chain are still billed as input tokens.
 - OpenAI compaction docs present compaction as a way to reduce context size while preserving state needed for future turns.
 - Codex reads layered `AGENTS.md` files and applies directory-specific instructions.
@@ -67,6 +78,7 @@ Safe to say:
 
 - long context can improve continuity, but it is not free;
 - cache hit rate is not a quality signal by itself;
+- cached input can still create a large bill at high volume;
 - prompt caching is a cost / latency optimization, not a semantic cleaning mechanism;
 - stale context and dirty session state are context-management problems;
 - stable instructions belong in durable project files more than chat history.
@@ -75,7 +87,8 @@ Avoid:
 
 - saying longer context is always bad;
 - saying cache causes dirty state;
-- using exact internal user costs or private usage logs;
+- publishing billing screenshots, account-level logs, exact cost breakdowns, or private usage logs;
+- publishing exact private SorryCode usage share, token totals, account logs, or screenshots;
 - turning this article into proxy / model-mapping criticism;
 - making unsupported claims about a specific provider or runtime.
 
