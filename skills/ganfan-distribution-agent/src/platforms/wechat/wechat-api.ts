@@ -3,7 +3,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { getWechatCommentFlags, loadWechatCredentialEnv, loadWechatProfile } from "./channel-profile.ts";
-import { resolvePublicationOutputPath } from "./publication-paths.ts";
+import { resolveArticleOutputPath } from "./article-paths.ts";
 
 interface WechatConfig {
   appId: string;
@@ -53,7 +53,7 @@ function loadConfig(): WechatConfig {
   if (!appId || !appSecret) {
     throw new Error(
       "Missing WECHAT_APP_ID or WECHAT_APP_SECRET.\n" +
-      "Set via environment variables or in distribution/profiles/wechat.local.env."
+      "Set via environment variables or in channels/profiles/wechat.local.env."
     );
   }
 
@@ -283,7 +283,7 @@ function parseFrontmatter(content: string): { frontmatter: Record<string, string
 }
 
 function resolveRenderedHtmlPath(markdownPath: string): string {
-  return resolvePublicationOutputPath(markdownPath);
+  return resolveArticleOutputPath(markdownPath);
 }
 
 function renderMarkdownToHtml(markdownPath: string, theme: string = "magazine", color?: string, citeStatus: boolean = true): string {
@@ -352,7 +352,7 @@ Frontmatter Fields (markdown):
   coverImage/featureImage/cover/image   Cover image path
 
 Comments:
-  Comment switches are read from distribution/profiles/wechat.yaml.
+  Comment switches are read from channels/profiles/wechat.yaml.
 
 Environment Variables:
   WECHAT_APP_ID       WeChat App ID
@@ -361,7 +361,7 @@ Environment Variables:
 Config File Locations (in priority order):
   1. Environment variables
   2. GANFAN_WECHAT_ENV_PATH
-  3. distribution/profiles/wechat.local.env
+  3. channels/profiles/wechat.local.env
 
 Example:
   bun wechat-api.ts article.md

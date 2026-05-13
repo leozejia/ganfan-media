@@ -1,0 +1,4 @@
+interface:
+  display_name: "分发执行"
+  short_description: "执行微信和 X Article 的渲染、预览、发布自动化"
+  default_prompt: "Use this skill to render or publish the current article package. Follow the platform profile, run the correct command, and record evidence in publish.md."

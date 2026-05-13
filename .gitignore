@@ -5,6 +5,7 @@ dist/
 build/
 .tmp/
 .runtime/
+articles/**/_work/
 *.log
 *.local.*
 *.secret.*

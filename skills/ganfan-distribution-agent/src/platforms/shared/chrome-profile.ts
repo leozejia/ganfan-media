@@ -30,7 +30,7 @@ function getRealUserHome(): string {
 function resolveRepoRoot(): string {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  return path.resolve(__dirname, '..', '..', '..', '..', '..', '..', '..', '..');
+  return path.resolve(__dirname, '..', '..', '..', '..', '..');
 }
 
 export function resolveSharedAutomationChromeProfileDir(configuredPath?: string): string {

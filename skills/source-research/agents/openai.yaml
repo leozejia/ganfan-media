@@ -1,0 +1,4 @@
+interface:
+  display_name: "事实收集"
+  short_description: "为文章包收集可溯源事实和公开/内部边界"
+  default_prompt: "Use this skill to collect source notes for the current article package. Save verified facts, links, and public/private boundaries in sources.md."

@@ -685,21 +685,21 @@ export async function postArticle(options: ArticleOptions): Promise<void> {
   let cdp: CdpConnection;
   const chrome = null;
 
-  // Shared automation Chrome line: attach existing session first, auto-launch the same profile if missing.
+  // Chrome remote debugging line: attach existing session first, auto-launch the configured profile if missing.
   const portToTry = await findExistingChromeDebugPort({ explicitPort: cdpPort, preferredPort: effectiveDebugPort, profileDir: effectiveProfileDir });
   if (portToTry) {
     const existing = await tryConnectExisting(portToTry);
     if (existing) {
-      console.log(`[cdp] Attached to shared automation Chrome on port ${portToTry}`);
+      console.log(`[cdp] Attached to Chrome remote debugging on port ${portToTry}`);
       cdp = existing;
     } else {
       const launched = await launchChrome(WECHAT_URL, effectiveProfileDir, effectiveDebugPort);
-      console.log(`[cdp] Relaunched shared automation Chrome on port ${launched.port}`);
+      console.log(`[cdp] Relaunched Chrome remote debugging on port ${launched.port}`);
       cdp = launched.cdp;
     }
   } else {
     const launched = await launchChrome(WECHAT_URL, effectiveProfileDir, effectiveDebugPort);
-    console.log(`[cdp] Launched shared automation Chrome on port ${launched.port}`);
+    console.log(`[cdp] Launched Chrome remote debugging on port ${launched.port}`);
     cdp = launched.cdp;
   }
 

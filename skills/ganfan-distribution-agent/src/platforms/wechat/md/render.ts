@@ -16,7 +16,7 @@ import {
   modifyHtmlStructure,
   removeFirstHeading,
 } from "./html-builder.js";
-import { isPublicationOutputPath, resolvePublicationOutputPath } from "../publication-paths.ts";
+import { isArticleOutputPath, resolveArticleOutputPath } from "../article-paths.ts";
 
 function formatTimestamp(date = new Date()): string {
   const pad = (value: number) => String(value).padStart(2, "0");
@@ -26,7 +26,7 @@ function formatTimestamp(date = new Date()): string {
 }
 
 function resolveDefaultOutputPath(inputPath: string): string {
-  return path.resolve(process.cwd(), resolvePublicationOutputPath(inputPath));
+  return path.resolve(process.cwd(), resolveArticleOutputPath(inputPath));
 }
 
 function escapeHtmlAttribute(value: string): string {
@@ -132,7 +132,7 @@ async function main(): Promise<void> {
   const inlinedHtml = normalizeInlineCss(await inlineCss(html), style);
   const finalHtml = rewriteLocalImageSources(modifyHtmlStructure(inlinedHtml), inputPath, outputPath);
 
-  const shouldBackup = !isPublicationOutputPath(outputPath);
+  const shouldBackup = !isArticleOutputPath(outputPath);
   let backupPath = "";
   if (shouldBackup && fs.existsSync(outputPath)) {
     backupPath = `${outputPath}.bak-${formatTimestamp()}`;

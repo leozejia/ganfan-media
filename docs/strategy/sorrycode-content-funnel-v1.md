@@ -2,145 +2,73 @@
 
 Updated: 2026-05-09
 
-## 核心策略
+## Core strategy
 
-SorryCode 的运营内容不做硬广告。每篇内容先解决一个真实问题，让读者学到东西，再把 SorryCode 放在最省事的行动路径上。
+SorryCode content should not feel like an ad. Each public piece should solve one real problem first, then make SorryCode the lowest-friction next step.
 
-一句话原则：X 建立信任，SorryCode 降低行动成本。
+Principle: X builds trust; SorryCode lowers action cost.
 
-## 漏斗设计
+## X / Twitter
 
-### X / Twitter
+X should teach one concrete thing before asking for a click.
 
-X 负责让人愿意看完、愿意转发、愿意相信我们。
+Use X for:
 
-每篇 X 内容只做三件事：
+- a sharp hook from a real user problem;
+- the key judgment or shortest working path;
+- one low-pressure pointer to the full SorryCode guide.
 
-1. 讲一个具体问题，不讲抽象愿景。
-2. 给出关键判断或最短解决路径。
-3. 在结尾给一个低压入口，引导到 SorryCode 的完整版本。
+Avoid:
 
-不要在 X 上塞太多安装命令、参数表、长排障和多张配图。X 用户更在意判断力和信息密度。
+- long troubleshooting trees;
+- too many commands;
+- multiple CTAs;
+- generic summaries;
+- images that do not help the click or the action.
 
-### SorryCode
+## SorryCode
 
-SorryCode 负责承接行动。
+SorryCode should carry the complete action path.
 
-站内版本必须提供：
+Use SorryCode for:
 
-1. 复制即用的命令。
-2. 保姆级步骤。
-3. 常见错误和补救方案。
-4. 相关 Skills / 工具 / 文档入口。
-5. 可持续更新的完整版。
+- copy-ready commands;
+- beginner steps;
+- troubleshooting;
+- Skills installation and agent-first instructions;
+- long-lived public documentation.
 
-X 可以讲清楚为什么，SorryCode 必须帮用户做成。
-
-## CTA 规则
-
-每篇文章只引导一个动作。
-
-推荐句式：
-
-- 完整命令和排障步骤，我整理到 SorryCode 文档了。
-- 如果你不想折腾环境，SorryCode 里放了可复制的最短路径。
-- 我把小白版步骤放在 SorryCode，照着走就能复现。
-
-避免句式：
-
-- 快来注册 SorryCode。
-- 全网最强教程。
-- 不看就亏。
-- 强行在每段都提 SorryCode。
-
-## 内容栏目
-
-### 小白踩坑
-
-来自真实用户问题。比如 macOS PATH、PowerShell 编码、API Key、模型选错、Codex App 插件不可用。
-
-标准结构：问题现象、原因判断、最快解法、完整步骤链接。
-
-### Agent 工作台
-
-解释 Codex、Claude Code、Codex App、VSCode、Browser、Chrome、Computer Use、HyperFrames 这些工具如何组合成工作台。
-
-标准结构：它解决什么痛点、适合谁、如何接入 SorryCode。
-
-### Skills 实战
-
-把 Skills 解释成 agent 的能力包，不把用户拖进插件系统细节。
-
-标准结构：这个 Skill 能帮你做什么、如何安装、装完怎么让 agent 使用。
-
-### 新手村任务
-
-任务驱动，不讲概念。比如生成第一张图、做第一份 PPT、写一个网页、做一个 2D 小游戏、读懂一个项目。
-
-标准结构：目标、准备、让 agent 执行、验收结果、下一步。
-
-### 案例复盘
-
-把社群真实问题沉淀为公开内容。隐去个人隐私和内部配置，只保留可复用经验。
-
-标准结构：用户卡在哪、我们怎么判断、最后怎么解决、沉淀成什么文档。
-
-## 图片策略
-
-图片只服务点击和理解，不作为固定配图流程。
-
-### X
-
-默认不插正文图。只有两种情况使用图片：
-
-1. 封面图能明显提高打开率。
-2. 截图能比文字更快说明问题。
-
-X 图片最多 1 张。不要为了显得完整硬塞多张图。
-
-### SorryCode
-
-站内文档可以放截图，但截图必须帮助用户完成操作。不能只是装饰。
-
-### 封面图
-
-封面图要像一个广告 Banner，而不是文章插画。
-
-优先特征：
-
-- 一个主视觉，不堆元素。
-- 一个强标题，不写满屏字。
-- 高对比、强留白、可在手机上看清。
-- 视觉表达问题或结果，不解释细节。
-- 品质感优先，不追求信息全。
-
-## SorryCode Image2 使用规则
-
-运营文章需要封面时，优先使用 `sorrycode-image2`。
-
-默认产出路径：
+For agent-executable tutorial docs, start with a Tips block:
 
 ```text
-publications/YYYY-MM-DD-topic/assets/cover/
+如果你不想看细节，点击右上角「复制 Markdown」，把全文发给你的 agent，比如 Codex 或 Claude Code，让它帮你检查并配置。
 ```
 
-默认只生成 1 张封面。除非用户要求，不生成多张正文插图。
+Then provide a copy-ready instruction users can paste into their agent.
 
-生成前先写 `cover-brief.md`，包含：
+Do not add this block when the tutorial is primarily a human action path, such as choosing an item from an interactive picker, copying a session id, reading a concept, or making a judgment call. In those cases, start directly with the problem and the command.
 
-- 文章标题
-- 目标读者
-- 想让读者点击的理由
-- 主视觉隐喻
-- 禁止出现的内容
+## Content columns
 
-然后再调用 `sorrycode-image2`，保存 prompt、请求和响应诊断。
+- 小白踩坑：real user problems and fixes.
+- Agent 工作台：Codex, Claude Code, Apps, VSCode, Browser, Chrome, Computer Use, HyperFrames.
+- Skills 实战：what a skill does, how to install it, how to ask the agent to use it.
+- 新手村任务：generate first image, make first PPT, write a webpage, build a small game, read a project.
+- 案例复盘：community problems turned into reusable public guidance.
 
-## 成功标准
+## Image strategy
 
-一篇运营内容合格，不看它有没有提到 SorryCode，而看：
+Images are optional. Use them only when they improve click-through or help the user act.
 
-1. X 读者看完是否真的学到一个判断或方法。
-2. 想动手的人是否自然点击 SorryCode。
-3. 站内版本是否能让小白少走一步弯路。
-4. 文章是否能沉淀成长期可复用文档。
+Default X visual strategy is a big-character poster: one strong Chinese title, one visual metaphor, high readability. It should not look like a generic SaaS UI collage.
+
+Use `ganfan-article-illustrator` for all article image planning and export. The illustrator owns channel sizes and should consult `references/channel-image-sizes.md`.
+
+## Success standard
+
+A piece works when:
+
+1. X readers learn something useful without feeling baited.
+2. Users who want to act naturally continue to SorryCode.
+3. SorryCode reduces the number of steps a beginner must understand.
+4. The article becomes reusable public documentation.

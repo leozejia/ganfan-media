@@ -4,7 +4,7 @@ import { resolveXProfilePath } from "./channel-profile.ts";
 
 const profilePath = resolveXProfilePath();
 assert.equal(
-  profilePath.endsWith(path.join("distribution", "profiles", "x.yaml")),
+  profilePath.endsWith(path.join("channels", "profiles", "x.yaml")),
   true
 );
 

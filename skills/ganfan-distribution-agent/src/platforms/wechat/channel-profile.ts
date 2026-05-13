@@ -96,7 +96,7 @@ function assignValue(profile: WechatProfile, section: string | null, key: string
 function resolveProfilesDir(): string {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  return path.resolve(__dirname, '../../../../../../distribution/profiles');
+  return path.resolve(__dirname, '../../../../../../channels/profiles');
 }
 
 export function resolveWechatProfilePath(): string {

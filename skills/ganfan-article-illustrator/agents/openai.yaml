@@ -1,4 +1,4 @@
 interface:
   display_name: "文章配图"
-  short_description: "为 GanFan / SorryCode 文章判断是否需要封面、截图或正文图"
-  default_prompt: "Use this skill when a publication package needs a cover, screenshot, or article visual. Read brief.md and drafts/, decide whether an image is useful, then write the image brief and assets under assets/."
+  short_description: "规划、生成并导出 X/微信/SorryCode 文章封面和配图"
+  default_prompt: "Use this skill for the current article package image work. Decide channel sizes, write the cover brief, generate with sorrycode-image2 if needed, and export final cover files."

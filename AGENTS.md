@@ -4,73 +4,79 @@ Scope: the entire `ganfan-media` repository.
 
 ## Role
 
-This repository is the single operating workspace for GanFan / SorryCode media operations.
-Agents working here act as operating officers: clarify audience, produce publishable assets,
-preserve source material, and keep distribution records traceable.
+This repository is the operating workspace for GanFan / SorryCode media operations.
+Agents working here act as operating officers: clarify audience, preserve source material,
+produce publishable assets, and keep distribution records traceable.
+
+## Entry Point
+
+Start every media task from:
+
+```text
+docs/workflows/media-operations-workflow.md
+```
+
+Do not use a separate content-production skill. The workflow document is the content-production source of truth.
 
 ## Operating Principles
 
-- Use this repo as the entry point for all media work; do not start new media workflows in `ganfan-nexus`.
-- Keep source material, drafts, channel-specific outputs, and publish logs separated.
+- Use this repo as the entry point for media work; do not start new workflows in `ganfan-nexus`.
+- Keep source material, drafts, assets, outputs, and publish logs separated.
 - Preserve factual claims and links from source notes; do not invent dates, metrics, screenshots, or official statements.
-- For product/public docs related to SorryCode, keep the public voice beginner-first, concrete, and operational.
+- For SorryCode public docs, keep the voice beginner-first, agent-first, concrete, and operational.
 - Do not commit private credentials, cookies, account tokens, API keys, or provider secrets.
 - Local secret files must use `.local.*`, `.env`, or `.secret.*` names and stay ignored.
 
-## Default Operating Strategy
+## Active Workflow Skills
 
-- X builds trust; SorryCode lowers action cost.
-- Each X article must teach one real thing before it points to SorryCode.
-- SorryCode carries copy-ready commands, beginner steps, troubleshooting, and Skills installation.
-- Use one low-pressure CTA per article; do not turn every post into an ad.
-- Images are optional. Use them only as a cover hook or when a screenshot helps the user act.
-- When an article needs generated visuals, use `sorrycode-image2` and save outputs under the publication folder.
+- `ganfan-distribution-agent`: the highest-value automation layer. Use for WeChat rendering/publishing and X Article publishing.
+- `ganfan-article-illustrator`: use for X covers, WeChat covers, SorryCode hero images, tutorial screenshots, generated posters, and final image exports.
+- `source-research`: use when a package needs verifiable source notes, links, screenshots, current facts, or public/private boundaries.
+- `ganfan-the-marveling-explorer`: use only for GanFan personal X voice or technical-humanistic essays, not default SorryCode tutorials.
 
-## Standard Publication Layout
+Community skills are not kept as active workflow skills; install them only when a specific task needs them.
 
-Create one folder per article under `publications/`:
+## Standard Article Layout
+
+Create one folder per article or campaign under `articles/`:
 
 ```text
-publications/YYYY-MM-DD-topic-slug/
-├── brief.md       # audience, angle, promise, factual boundary
-├── sources/       # original notes, links, screenshots, transcripts
-├── drafts/        # channel-ready drafts
-│   ├── x.md
-│   └── sorrycode.md
-├── assets/        # optional cover, screenshots, generated images
-├── outputs/       # rendered channel artifacts
-└── publish.md     # status, links, metrics, feedback
+articles/YYYY-MM-DD-topic-slug/
+├── brief.md
+├── sources.md
+├── x.md
+├── sorrycode.md
+├── assets/
+│   ├── cover.png
+│   └── inline-01.png
+├── _work/
+│   └── images/
+├── outputs/
+│   └── wechat/
+└── publish.md
 ```
 
-## Lightweight Workflow
+## Article Rules
 
-Default workflow docs live in:
+- `brief.md` defines audience, angle, funnel target, channels, image need, and factual boundary.
+- `sources.md` preserves raw material and private notes; drafts must not invent claims outside sources.
+- `x.md` and `sorrycode.md` are channel-ready outputs.
+- `assets/` stores only usable article assets, usually `cover.png` and optional body images such as `inline-01.png`.
+- `_work/` stores prompts, diagnostics, failed generations, temporary exports, and other process files.
+- `publish.md` records target channel, status, URL if available, automation command, metrics, and follow-up notes.
+- For X, teach one real thing before linking to SorryCode.
+- For SorryCode, provide concrete beginner value, direct steps, and relevant docs/Skills entry points.
 
-- `docs/strategy/sorrycode-content-funnel-v1.md`
-- `docs/workflows/lightweight-article-workflow.md`
+## Image Rules
 
-Use the standard publication layout for all ordinary media work. If a project needs
-deep research, WeChat rendering, or automation, design that package explicitly
-instead of reviving the old numbered article layout.
-
-## Workflow Assets
-
-- `skills/` contains reusable agent skills and automation workflows.
-- `distribution/profiles/` contains non-secret platform preferences.
-- `ganfan-knowledge-vault/` contains the migrated knowledge vault content and templates.
-- `assets/` contains reusable media files.
-
-## Distribution Rules
-
-- `brief.md` defines the audience, angle, funnel target, and factual boundary.
-- `sources/` preserves raw material and private notes; drafts must not invent claims outside these sources.
-- `drafts/x.md` and `drafts/sorrycode.md` are the channel-ready outputs.
-- Every shipped item needs a `publish.md` with target channel, status, URL if available, and follow-up notes.
-- For X/Twitter, prefer concise threads with one clear claim per post.
-- For SorryCode, prefer concrete beginner value, direct steps, and links to relevant docs.
+- Do not guess cover dimensions from memory.
+- Use `ganfan-article-illustrator/references/channel-image-sizes.md` for channel sizes.
+- Generate source images through `sorrycode-image2` when needed.
+- Export final files with exact channel presets before publishing.
+- Images are optional; use them only as a cover hook or when screenshots help the user act.
 
 ## Git Rules
 
 - Commit coherent operational units: one workflow migration, one article package, or one publishing automation change.
 - Do not commit generated caches, dependency folders, local browser profiles, or secret files.
-- Before publishing, check `git status --short` and review any unexpected binary or credential-like files.
+- Before publishing or committing, check `git status --short` and review unexpected binary or credential-like files.

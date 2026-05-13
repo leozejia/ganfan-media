@@ -4,13 +4,13 @@ import { resolveWechatEnvPath, resolveWechatProfilePath } from "./channel-profil
 
 const profilePath = resolveWechatProfilePath();
 assert.equal(
-  profilePath.endsWith(path.join("distribution", "profiles", "wechat.yaml")),
+  profilePath.endsWith(path.join("channels", "profiles", "wechat.yaml")),
   true
 );
 
 const envPath = resolveWechatEnvPath();
 assert.equal(
-  envPath.endsWith(path.join("distribution", "profiles", "wechat.local.env")),
+  envPath.endsWith(path.join("channels", "profiles", "wechat.local.env")),
   true
 );
 

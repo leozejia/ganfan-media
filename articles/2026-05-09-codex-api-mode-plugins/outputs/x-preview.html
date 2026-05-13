@@ -1,0 +1,19 @@
+<p>最近 Codex App 的插件越来越好玩，Chrome 能读网页，Computer Use 能控制电脑，HyperFrames 能做视频。</p>
+<p>但我发现一个很烦的卡点：用 API Key / 中转站登录 Codex App，左侧「插件」按钮可能是灰的，想体验这些插件的人会直接卡住。</p>
+<p>中转站的徒子徒孙们如果也想玩 Chrome、HyperFrames、Computer Use，可以直接手动改配置。</p>
+<p>直接改：</p>
+<blockquote>~/.codex/config.toml</blockquote>
+<p>把下面这段加进去：</p>
+<blockquote>[plugins.&quot;browser-use@openai-bundled&quot;]<br>enabled = true<br><br>[plugins.&quot;chrome@openai-bundled&quot;]<br>enabled = true<br><br>[plugins.&quot;computer-use@openai-bundled&quot;]<br>enabled = true<br><br>[plugins.&quot;hyperframes@openai-curated&quot;]<br>enabled = true</blockquote>
+<p>然后完整退出 Codex App，再重新打开。</p>
+<p>注意，是完整退出，不只是关窗口。</p>
+<p>重启后，看输入框旁边的插件菜单。</p>
+<p>能看到 Browser / Chrome / Computer Use / HyperFrames，就说明配置生效了。</p>
+<p>之后直接这样用：</p>
+<blockquote>@Chrome 打开 X，帮我读这条帖子</blockquote>
+<blockquote>@Computer 检查屏幕录制权限</blockquote>
+<blockquote>@HyperFrames 做一个 10 秒产品介绍视频</blockquote>
+<p>几个坑：</p>
+<ol><li>Chrome 需要 Codex Chrome Extension 和 native host。</li><li>HyperFrames 的配置名是 <code>hyperframes@openai-curated</code>，不是 <code>hyperframes@plugins</code>。</li><li>Codex Chrome Extension 地址：<code>https://chromewebstore.google.com/detail/codex/hehggadaopoacecdllhhajmbjkdcmajg</code></li><li>如果 Chrome Web Store 提示所在地区不可用，先切换可访问地区 / 网络环境，再安装扩展。</li><li>使用前确认 Chrome 扩展处于连接正常状态。</li><li>如果文件上传 / 下载失败，到 <code>chrome://extensions/</code> 里给 Codex 扩展开文件网址权限。</li><li>如果 Chrome 仍然卡住，再检查旧浏览器自动化工具残留，比如旧 browser-use / agent-browser 类工具，不要一上来乱删文件。</li></ol>
+<p>完整教程和踩坑记录我放在 SorryCode：</p>
+<p>https://sorrycode.com/docs/runtime/codex-plugins</p>

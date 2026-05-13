@@ -216,16 +216,17 @@ async function resolveLaunchPort(preferredPort: number): Promise<number> {
   if (await hasChromeDebugEndpoint(preferredPort)) return preferredPort;
   if (await canBindPort(preferredPort)) return preferredPort;
   throw new Error(
-    `[chrome] Shared automation Chrome port ${preferredPort} is occupied by another process. ` +
-      'The GanFan Media shared browser line now uses a fixed port; stop the conflicting process and retry.',
+    `[chrome] Chrome debug port ${preferredPort} is occupied by another process. ` +
+      'Close the existing Chrome window with Cmd+Q, then rerun this command so Chrome can restart with remote debugging enabled.',
   );
 }
 
 function buildSharedChromeMessage(context: string, profileDir: string, url: string, chromePath?: string): string {
   return [
-    `${context}: shared automation Chrome profile = ${profileDir}`,
-    'This workflow uses one shared automation Chrome line for both X and WeChat.',
-    'If you want to start it manually, launch Chrome with the same non-default profile and remote debugging enabled:',
+    `${context}: Chrome user data dir = ${profileDir}`,
+    'This workflow uses your configured Chrome profile with remote debugging enabled.',
+    'If Chrome is already open without remote debugging, quit Chrome completely and rerun the publishing command.',
+    'Manual launch example:',
     `Example: ${formatManualChromeCommand(url, profileDir, chromePath)}`,
   ].join('\n');
 }
@@ -243,9 +244,10 @@ export async function launchChrome(
   fs.mkdirSync(profileDir, { recursive: true });
   const port = await resolveLaunchPort(preferredPort);
 
-  console.log(`[chrome] Launching shared automation Chrome (profile: ${profileDir}, port: ${port})`);
+  console.log(`[chrome] Launching Chrome with remote debugging (profile: ${profileDir}, port: ${port})`);
   const chrome = spawn(executable, [
     `--remote-debugging-port=${port}`,
+    '--remote-allow-origins=*',
     `--user-data-dir=${profileDir}`,
     '--no-first-run',
     '--no-default-browser-check',
@@ -263,7 +265,7 @@ export async function launchChrome(
     if (latePort) return latePort;
 
     throw new Error([
-      `${context}: failed to launch shared automation Chrome.`,
+      `${context}: failed to launch Chrome with remote debugging.`,
       buildSharedChromeMessage(context, profileDir, url, executable),
       `Cause: ${error instanceof Error ? error.message : String(error)}`,
     ].join('\n'));

@@ -1,0 +1,15 @@
+defaults:
+  author: 干饭新秩序
+  publish_method: browser
+  theme: magazine
+  color: "#FF8C38"
+  cover_size: "900x383"
+  cover_preset: wechat-cover
+  share_size: "500x500"
+  share_preset: wechat-share
+comments:
+  open: true
+  fans_only: false
+browser:
+  chrome_profile_path: ""
+  chrome_debug_port: 56888

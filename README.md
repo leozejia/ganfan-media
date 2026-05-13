@@ -1,28 +1,34 @@
 # GanFan Media
 
-GanFan Media is the operating workspace for GanFan / SorryCode content production,
-source collection, publication packaging, and multi-channel distribution.
+GanFan Media is the operating workspace for GanFan / SorryCode content packages, source collection, article assets, and multi-channel distribution.
+
+## Start Here
+
+Agents and operators should start from:
+
+```text
+docs/workflows/media-operations-workflow.md
+```
+
+The root `AGENTS.md` defines repository-level operating rules.
 
 ## What Lives Here
 
-- `publications/` — one folder per article or campaign package.
-- `skills/` — reusable content, illustration, and distribution skills.
-- `distribution/` — publishing profiles and distribution records that are not per-article.
-- `ganfan-knowledge-vault/` — migrated knowledge vault and long-term source notes.
+- `articles/` — one folder per article or campaign package.
+- `skills/ganfan-distribution-agent/` — WeChat and X Article publishing automation.
+- `skills/ganfan-article-illustrator/` — image planning, generation coordination, and channel exports.
+- `skills/source-research/` — factual source collection and public/private boundaries.
+- `channels/` — publishing profiles and platform defaults.
+- `ganfan-knowledge-vault/` — migrated knowledge vault and long-term source material.
 - `assets/` — reusable media assets.
-- `docs/` — strategy, workflow, and operational notes.
+- `docs/` — strategy, workflow, and migration notes.
 
-## Default Article Flow
+## Default Flow
 
-1. Write the article direction in `publications/YYYY-MM-DD-topic/brief.md`.
-2. Preserve raw material in `sources/`.
-3. Write channel-ready drafts in `drafts/x.md` and `drafts/sorrycode.md`.
-4. Add optional cover or screenshots in `assets/` only when they help.
-5. Record publishing status, links, metrics, and feedback in `publish.md`.
-
-The current strategy is documented in `docs/strategy/sorrycode-content-funnel-v1.md`. The lightweight production workflow is documented in `docs/workflows/lightweight-article-workflow.md`.
-
-## Migration Note
-
-This repository replaces the previous media substrate under
-`ganfan-nexus/mantle/media_substrate`. New media work should start here.
+1. Create `articles/YYYY-MM-DD-topic-slug/`.
+2. Write `brief.md`.
+3. Preserve source facts in `sources.md`.
+4. Write channel-ready drafts in `x.md` and `sorrycode.md`.
+5. Use `ganfan-article-illustrator` only if image assets are useful or required; final usable images go in `assets/`, process files go in `_work/`.
+6. Use `ganfan-distribution-agent` for WeChat or X Article publishing.
+7. Record status and links in `publish.md`.

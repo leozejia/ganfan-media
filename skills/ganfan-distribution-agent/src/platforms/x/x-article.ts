@@ -85,7 +85,7 @@ export async function publishArticle(options: ArticleOptions): Promise<void> {
     X_ARTICLES_URL,
     chromePath,
   );
-  console.log(`[x-article] ${launched ? 'Launched' : 'Attaching to'} shared automation Chrome on port ${port}`);
+  console.log(`[x-article] ${launched ? 'Launched' : 'Attaching to'} Chrome remote debugging on port ${port}`);
 
   let cdp: CdpConnection | null = null;
 

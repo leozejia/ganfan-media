@@ -1,104 +1,160 @@
 ---
 name: ganfan-article-illustrator
-version: 3.0.0
-description: GanFan Media 轻量封面与文章视觉编排。默认只判断是否需要图片；需要封面、海报、文章图或教程截图时，优先调用 sorrycode-image2。普通 X 线程默认不配图，不再强制为每篇文章生成正文插图。
-author: GanFan Media
+description: Plan, generate, and export article visuals for GanFan / SorryCode article packages. Use whenever a article needs an X cover, WeChat cover, SorryCode docs hero, tutorial screenshot, generated poster, or image asset. This skill owns channel size decisions, cover briefs, style selection, calling sorrycode-image2, and exporting cropped delivery images.
 ---
 
-# GanFan Article Illustrator v3
+# GanFan Article Illustrator
 
-## 定位
+## Role
 
-这个 Skill 只负责内容视觉判断和封面 brief，不再默认给文章生成一组正文插图。
+Use this skill as the image director for a article package.
 
-默认判断：这篇内容是否真的需要图片。
+It decides:
 
-## 图片使用原则
+1. whether an image is worth making;
+2. which channel sizes are required;
+3. which visual style fits the job;
+4. what prompt/brief should be used;
+5. how to call `sorrycode-image2`;
+6. how to export final channel-ready files.
 
-图片只服务两个目标：
+`distribution-agent` publishes. `sorrycode-image2` executes image requests. This skill coordinates the visual workflow between them.
 
-1. 提高点击。
-2. 帮助理解或操作。
+## Default output paths
 
-不为了显得完整而插图。
-
-## 默认结论
-
-普通 X 线程默认不需要图片。
-
-只有这些情况才建议生成图片：
-
-- 标题需要一个强封面来提高打开率。
-- 文章主题是视觉、设计、图片、PPT、视频。
-- SorryCode 站内教程需要截图帮助小白操作。
-- 用户明确要求封面、海报、插图或截图。
-
-## 输出结构
-
-如果需要图片，输出到：
+For a article package, write assets under:
 
 ```text
-assets/cover/
+assets/
+├── cover.png
+└── inline-01.png
+
+_work/images/
 ├── cover-brief.md
 ├── prompt.txt
-└── sorrycode-image2/
+├── selected-source.png
+├── rejected/
+└── sorrycode-image2-attempt-N/
 ```
 
-如果不需要图片，在 `brief.md` 里记录：
+Use only the files that are needed. `assets/` is the asset surface; `_work/` is the process surface.
+
+Default to one `assets/cover.png`. Add channel-specific names only when one package needs multiple different cover crops.
+
+## Workflow
+
+### 1. Decide whether image is needed
+
+Generate an image only when it helps one of these jobs:
+
+- make an X post/article stop the scroll;
+- make a SorryCode tutorial easier to follow;
+- provide a required WeChat/X cover;
+- explain a visual/design/PPT/video topic;
+- satisfy an explicit user request for an asset.
+
+If not needed, record `Image decision: no image needed` in `brief.md` and stop.
+
+### 2. Choose delivery targets before prompting
+
+Read `references/channel-image-sizes.md` before choosing a size.
+
+Common targets:
+
+- Single default cover: `assets/cover.png`.
+- X Article cover: `assets/cover.png` at `1500x600`.
+- X single-image post cover: `assets/cover.png` at `1200x675`.
+- WeChat cover: `assets/cover.png` at `900x383`.
+- WeChat share thumbnail: `assets/share.png` at `500x500`.
+- SorryCode docs hero: `assets/cover.png` at `1200x675`.
+
+Use channel-specific names such as `assets/cover-wechat.png` only when one package publishes to multiple channels with different crops.
+
+Do not invent ratios from memory. If the target is unclear, write the brief with `target: undecided` and ask the operator before generating.
+
+### 3. Choose the visual route
+
+Read `styles/index.md` first. Then load exactly one active style file:
+
+- `styles/big-character-poster.md` for the default X/SorryCode hook cover.
+- `styles/screenshot-led-tutorial.md` when real UI proof matters.
+- `styles/editorial-illustration.md` for personal essays and abstract narratives.
+- `styles/minimal-poster.md` for restrained premium covers.
+
+Use screenshot-led visuals only when real screenshots are available or explicitly requested. Do not ask an image model to fabricate UI screenshots.
+
+### 4. Write `cover-brief.md`
+
+Include:
+
+- article title;
+- target reader;
+- channel targets and output sizes;
+- click reason;
+- main title text;
+- optional supporting text;
+- visual metaphor;
+- style route and style file used;
+- safe-area notes;
+- forbidden elements;
+- prompt block.
+
+Also write the final prompt to `_work/images/prompt.txt` before generation.
+
+### 5. Generate source image
+
+Use `sorrycode-image2` for generation.
+
+Default source sizes:
+
+- X Article covers: request `1500x600` first and verify returned dimensions;
+- normal horizontal covers: `1536x1024`;
+- square thumbnails: `1024x1024`.
+
+Do not silently use experimental high-resolution sizes. If high-res is required, follow the `sorrycode-image2` size guide and document the risk in `cover-brief.md`.
+
+Save diagnostics in a numbered attempt folder when retrying:
 
 ```text
-Image decision: no image needed.
-Reason: ...
+_work/images/sorrycode-image2-attempt-1/
+_work/images/sorrycode-image2-attempt-2/
 ```
 
-## 封面 brief
+### 6. Export delivery images
 
-生成图片前先写 `cover-brief.md`。
+After downloading or saving the source image, export exact channel sizes.
 
-必须包含：
+On macOS, use the bundled script:
 
-- 文章标题
-- 目标读者
-- 点击理由
-- 主视觉隐喻
-- 画面主体
-- 色彩和气质
-- 禁止出现的内容
+```bash
+skills/ganfan-article-illustrator/scripts/resize_cover.sh \
+  _work/images/selected-source.png \
+  assets/cover.png \
+  x-article-cover
+```
 
-## 封面风格
+Supported presets:
 
-参考方向：高完成度商业 Banner，而不是文章插画。需要写封面 prompt 时，读取 `references/x-cover-banner-patterns.md` 和 `prompts/cover-prompt-template.md`。
+- `x-article-cover` -> `1500x600`
+- `x-article-card` -> `1200x675`
+- `x-single-image` -> `1200x675`
+- `wechat-cover` -> `900x383`
+- `wechat-share` -> `500x500`
 
-优先特征：
+If the script cannot run, preserve the source image and record the missing export step in `publish.md`.
 
-- 一个主视觉，不堆元素。
-- 一个强标题，不写满屏字。
-- 高对比、强留白、手机端可读。
-- 画面表达问题或结果，不解释细节。
-- 质感干净，像认真设计过的产品广告。
+### 7. Inspect before handoff
 
-## SorryCode Image2
+Open the final image locally when possible. Reject the asset if:
 
-生成图片时调用 `sorrycode-image2`。
+- the main Chinese text is unreadable or wrong;
+- the image looks like generic SaaS UI collage when the route was big-character poster;
+- key text is outside the target safe area;
+- the output includes fake logos, QR codes, random text, watermarks, or signatures.
 
-默认参数由 `sorrycode-image2` 决定。不要在这里重复 API 细节。
+## Boundaries
 
-默认只生成 1 张封面图。除非用户明确要求，不生成多张变体。
-
-## Do / Don't
-
-**Do**
-
-- 先判断是否需要图。
-- 只做对点击或理解有帮助的图。
-- 用 `sorrycode-image2` 保存 prompt、请求和响应诊断。
-- 保持封面像广告 Banner，有明确主视觉。
-
-**Don't**
-
-- 不要为每篇文章强制配图。
-- 不要默认生成多张正文插图。
-- 不要继续使用旧 Tuzi 链路。
-- 不要把低层 API 参数写进这个 Skill。
-- 不要在 X 文章里堆多张图。
-- 不要照搬外部作者提示词；只吸收其广告 Banner 方法和构图原则。
+- Do not publish images; publishing belongs to `distribution-agent`.
+- Do not write the article; article workflow lives in `docs/workflows/media-operations-workflow.md`.
+- Do not expose API keys or provider internals.
+- Do not keep generating variants by default. One strong attempt, inspect, then revise only if there is a clear defect.

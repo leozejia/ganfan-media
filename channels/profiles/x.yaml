@@ -1,0 +1,7 @@
+defaults:
+  publish_method: browser
+  cover_size: "1500x600"
+  cover_preset: x-article-cover
+browser:
+  chrome_profile_path: ""
+  chrome_path: ""

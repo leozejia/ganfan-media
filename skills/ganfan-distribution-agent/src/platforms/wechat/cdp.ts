@@ -190,12 +190,12 @@ async function canBindPort(port: number): Promise<boolean> {
 async function resolveLaunchPort(preferredPort?: number): Promise<number> {
   const preferred = normalizePort(preferredPort);
   if (!preferred) {
-    throw new Error('[cdp] Shared automation Chrome requires an explicit fixed debug port.');
+    throw new Error('[cdp] Chrome remote debugging requires an explicit fixed debug port.');
   }
   if (await canBindPort(preferred)) return preferred;
   throw new Error(
-    `[cdp] Shared automation Chrome port ${preferred} is occupied by another process. ` +
-      'The GanFan Media shared browser line now uses a fixed port; stop the conflicting process and retry.',
+    `[cdp] Chrome debug port ${preferred} is occupied by another process. ` +
+      'Close the existing Chrome window with Cmd+Q, then rerun this command so Chrome can restart with remote debugging enabled.',
   );
 }
 
@@ -204,8 +204,8 @@ function buildSharedChromeMessage(url: string, profileDir: string, preferredPort
   const chromePath = findChromeExecutable();
 
   return [
-    `[cdp] Shared automation Chrome profile = ${profileDir}`,
-    '[cdp] X 与微信共用同一个 automation Chrome profile；默认会先 attach，不存在时再自动拉起。',
+    `[cdp] Chrome user data dir = ${profileDir}`,
+    '[cdp] 发布自动化需要 Chrome 以 remote debugging 启动；如果 Chrome 已经普通方式打开，请先完整退出再重跑。',
     `[cdp] Manual launch example: ${buildManualChromeCommand(url, profileDir, port, chromePath)}`,
   ].join('\n');
 }
@@ -343,9 +343,10 @@ export async function launchChrome(
   fs.mkdirSync(profileDir, { recursive: true });
   const port = await resolveLaunchPort(preferredPort);
 
-  console.log(`[cdp] Launching shared automation Chrome (profile: ${profileDir}, port: ${port})`);
+  console.log(`[cdp] Launching Chrome with remote debugging (profile: ${profileDir}, port: ${port})`);
   const chrome = spawn(chromePath, [
     `--remote-debugging-port=${port}`,
+    '--remote-allow-origins=*',
     `--user-data-dir=${profileDir}`,
     '--no-first-run',
     '--no-default-browser-check',
@@ -371,7 +372,7 @@ export async function launchChrome(
     }
 
     throw new Error([
-      '[cdp] Failed to launch shared automation Chrome.',
+      '[cdp] Failed to launch Chrome with remote debugging.',
       buildSharedChromeMessage(url, profileDir, preferredPort ?? port),
       `Cause: ${error instanceof Error ? error.message : String(error)}`,
     ].join('\n'));
