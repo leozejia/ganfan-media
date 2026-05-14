@@ -5,7 +5,7 @@ Updated: 2026-05-14
 This file is legacy research material. The active reusable method now lives in:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/canon/conflict-poster
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/conflict-poster
 ```
 
 Keep this file only for historical notes about why GanFan moved away from

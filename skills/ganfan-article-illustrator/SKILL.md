@@ -1,6 +1,6 @@
 ---
 name: ganfan-article-illustrator
-description: Plan, generate, and export article visuals for GanFan / SorryCode article packages. Use whenever a article needs an X cover, WeChat cover, SorryCode docs hero, tutorial screenshot, generated poster, or image asset. This skill owns channel size decisions, cover briefs, style selection, calling sorrycode-image2, and exporting cropped delivery images.
+description: Plan, generate, and export article visuals for GanFan / SorryCode article packages. Use whenever a article needs an X cover, WeChat cover, SorryCode docs hero, tutorial screenshot, generated poster, or image asset. This skill owns channel size decisions, cover briefs, pattern selection, calling sorrycode-image2, and exporting cropped delivery images.
 ---
 
 # GanFan Article Illustrator
@@ -21,7 +21,7 @@ It decides:
 
 1. whether an image is worth making;
 2. which channel sizes are required;
-3. which Open Visual Grammar canon fits the job;
+3. which Open Visual Grammar pattern fits the job;
 4. what visual score and runtime prompt should be used;
 5. how to call `sorrycode-image2`;
 6. how to export final channel-ready files.
@@ -81,7 +81,7 @@ Use channel-specific names such as `assets/cover-wechat.png` only when one packa
 
 Do not invent ratios from memory. If the target is unclear, write the brief with `target: undecided` and ask the operator before generating.
 
-### 3. Choose the visual canon
+### 3. Choose the visual pattern
 
 Use progressive disclosure. Read the Open Visual Grammar entry point only when
 an image is needed:
@@ -90,22 +90,19 @@ an image is needed:
 /Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/README.md
 ```
 
-Then load exactly one canon:
+Then load exactly one stable pattern:
 
-- `canon/conflict-poster/FRAMEWORK.md` for X hooks, public arguments, hot tools, failure fixes, and sharp concepts.
-- `canon/documentation-hero/FRAMEWORK.md` for SorryCode docs hero images and beginner-friendly concept pages.
-- `canon/proof-screenshot/FRAMEWORK.md` when real UI or command proof matters.
-- `canon/editorial-illustration/FRAMEWORK.md` for personal essays and abstract narratives.
-- `canon/minimal-poster/FRAMEWORK.md` for restrained covers where one object or phrase can carry the idea.
+- `patterns/conflict-poster/PATTERN.md` for X hooks, public arguments, hot tools, failure fixes, and sharp concepts.
+- `patterns/documentation-hero/PATTERN.md` for SorryCode docs hero images and beginner-friendly concept pages.
 
-Use `proof-screenshot` only when real screenshots are available or explicitly requested. Do not ask an image model to fabricate UI screenshots.
-
-Archived local style files are legacy references. Do not load them by default.
-If a surface treatment is needed, first choose the canon, then optionally consult:
+Use local incubation notes for candidate patterns that are not yet public stable:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/treatments/README.md
+docs/visual-incubation/pattern-candidates.md
 ```
+
+If real UI proof matters, use a real screenshot and follow the screenshot notes
+there. Do not ask an image model to fabricate UI screenshots.
 
 ### 4. Write `cover-brief.md`
 
@@ -115,7 +112,7 @@ Include:
 - target reader;
 - channel targets and output sizes;
 - click reason;
-- selected Open Visual Grammar canon;
+- selected Open Visual Grammar pattern;
 - visual score;
 - main title text;
 - optional supporting text;
@@ -128,7 +125,7 @@ Also write the visual score to `_work/images/score.md` and the final compiled
 image prompt to `_work/images/runtime-prompt.txt` before generation.
 
 Do not copy one-off runtime prompts back into Open Visual Grammar. Promote only
-stable, reviewed frameworks or examples.
+stable, reviewed patterns or pattern-local examples.
 
 ### 5. Generate source image
 
@@ -177,7 +174,7 @@ If the script cannot run, preserve the source image and record the missing expor
 Open the final image locally when possible. Reject the asset if:
 
 - the main Chinese text is unreadable or wrong;
-- the image violates the selected canon's anti-patterns;
+- the image violates the selected pattern's anti-patterns;
 - key text is outside the target safe area;
 - the output includes fake logos, QR codes, random text, watermarks, or signatures.
 

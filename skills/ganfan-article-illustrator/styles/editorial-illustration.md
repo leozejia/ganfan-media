@@ -1,9 +1,9 @@
 # Legacy: Editorial Illustration
 
-This local style has been migrated to Open Visual Grammar:
+This local style is an internal candidate, not a public stable pattern yet.
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/canon/editorial-illustration/FRAMEWORK.md
+docs/visual-incubation/pattern-candidates.md
 ```
 
 Do not use this file as the source of truth.

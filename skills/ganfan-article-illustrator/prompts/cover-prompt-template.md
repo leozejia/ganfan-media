@@ -7,7 +7,7 @@ new cover planning.
 
 New workflow:
 
-1. choose a canon from `/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/canon`;
+1. choose a pattern from `/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns`;
 2. write `_work/images/score.md`;
 3. compile the score through the relevant runtime note;
 4. save the one-off runtime prompt as `_work/images/runtime-prompt.txt`.

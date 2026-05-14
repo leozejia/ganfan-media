@@ -117,7 +117,7 @@ Images are optional. Use `ganfan-article-illustrator` when the package needs:
 
 The illustrator skill owns channel size decisions, article asset paths,
 visual-score compilation, `sorrycode-image2` generation, and final cropped
-exports. Stable visual canons belong in Open Visual Grammar, not in per-article
+exports. Stable visual patterns belong in Open Visual Grammar, not in per-article
 prompt files.
 
 Do not guess image ratio in article drafts.

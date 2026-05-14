@@ -10,28 +10,28 @@ Use Open Visual Grammar instead:
 /Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar
 ```
 
-## Canon mapping
+## Pattern mapping
 
-| Old local style | Open Visual Grammar canon |
+| Old local style | Current status |
 | --- | --- |
-| `big-character-poster.md` | `canon/conflict-poster/FRAMEWORK.md` |
-| `screenshot-led-tutorial.md` | `canon/proof-screenshot/FRAMEWORK.md` |
-| `editorial-illustration.md` | `canon/editorial-illustration/FRAMEWORK.md` |
-| `minimal-poster.md` | `canon/minimal-poster/FRAMEWORK.md` |
+| `big-character-poster.md` | Public stable pattern: `patterns/conflict-poster/PATTERN.md` |
+| `screenshot-led-tutorial.md` | Internal candidate: `docs/visual-incubation/pattern-candidates.md` |
+| `editorial-illustration.md` | Internal candidate: `docs/visual-incubation/pattern-candidates.md` |
+| `minimal-poster.md` | Internal candidate: `docs/visual-incubation/pattern-candidates.md` |
 
 SorryCode documentation hero images should use:
 
 ```text
-canon/documentation-hero/FRAMEWORK.md
+patterns/documentation-hero/PATTERN.md
 ```
 
 ## Rule
 
 Do not add new styles here.
 
-If a visual pattern becomes stable, add or update a canon in Open Visual
+If a visual pattern becomes stable, add or update a pattern in Open Visual
 Grammar. Keep this skill focused on GanFan article execution: channel sizes,
 asset paths, generation calls, inspection, and exports.
 
-Archived YAML files are legacy treatment notes only. Do not route to them by
+Archived YAML files are legacy candidate notes only. Do not route to them by
 default.

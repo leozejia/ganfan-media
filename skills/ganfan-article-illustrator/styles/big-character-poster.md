@@ -3,7 +3,7 @@
 This local style has been migrated to Open Visual Grammar:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/canon/conflict-poster/FRAMEWORK.md
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/conflict-poster/PATTERN.md
 ```
 
 Do not use this file as the source of truth.
