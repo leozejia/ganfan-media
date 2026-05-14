@@ -12,7 +12,10 @@ The repository has three active operating layers:
 2. This workflow defines how to produce article packages.
 3. `ganfan-distribution-agent` handles fragile publishing automation.
 
-Images are handled by `ganfan-article-illustrator`. Facts are handled by `source-research`. Personal X style can use `ganfan-the-marveling-explorer` when explicitly appropriate.
+Images are executed by `ganfan-article-illustrator`. Reusable visual method
+lives in `/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar`.
+Facts are handled by `source-research`. Personal X style can use
+`ganfan-the-marveling-explorer` when explicitly appropriate.
 
 ## Package layout
 
@@ -112,7 +115,10 @@ Images are optional. Use `ganfan-article-illustrator` when the package needs:
 - tutorial screenshot;
 - generated poster or article visual.
 
-The illustrator skill owns channel size decisions, style route, prompt, `sorrycode-image2` generation, and final cropped exports.
+The illustrator skill owns channel size decisions, article asset paths,
+visual-score compilation, `sorrycode-image2` generation, and final cropped
+exports. Stable visual canons belong in Open Visual Grammar, not in per-article
+prompt files.
 
 Do not guess image ratio in article drafts.
 
@@ -121,7 +127,7 @@ Keep `assets/` as the asset surface:
 - use `assets/cover.png` when the package needs one default cover;
 - use explicit names only when channels need different crops, such as `assets/cover-x-article.png` and `assets/cover-wechat.png`;
 - use `assets/inline-01.png`, `assets/inline-02.png` for body images;
-- put prompts, API diagnostics, rejected images, and temporary exports under `_work/images/`;
+- put visual scores, runtime prompts, API diagnostics, rejected images, and temporary exports under `_work/images/`;
 - drafts and publish logs should reference `assets/`, not `_work/`.
 
 ### 5. Publish

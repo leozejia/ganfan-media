@@ -1,18 +1,12 @@
-# Minimal Poster
+# Legacy: Minimal Poster
 
-Use this style when the topic needs restraint, whitespace, and premium calm.
+This local style has been migrated to Open Visual Grammar:
 
-## Best for
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/canon/minimal-poster/FRAMEWORK.md
+```
 
-- Strategy notes.
-- Concept explainers.
-- Product positioning pieces.
-- Covers where a single object can carry the metaphor.
+Do not use this file as the source of truth.
 
-## Rules
-
-- One object or one typographic phrase.
-- Strong whitespace.
-- Limited palette, usually 2-3 colors.
-- No decorative UI cards.
-- No dense explanatory text.
+Use `minimal-poster` when one object, phrase, or spatial relationship can carry
+the idea with restraint and whitespace.

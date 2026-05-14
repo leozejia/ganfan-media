@@ -1,4 +1,18 @@
-# Cover Prompt Template
+# Legacy Cover Prompt Template
+
+Updated: 2026-05-14
+
+This file is legacy reference material. Do not use it as the source of truth for
+new cover planning.
+
+New workflow:
+
+1. choose a canon from `/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/canon`;
+2. write `_work/images/score.md`;
+3. compile the score through the relevant runtime note;
+4. save the one-off runtime prompt as `_work/images/runtime-prompt.txt`.
+
+Do not copy one-off prompts back into this skill or into Open Visual Grammar.
 
 适用于 X / SorryCode 文章封面。默认生成一张高点击大字报封面，不默认生成正文插图。
 

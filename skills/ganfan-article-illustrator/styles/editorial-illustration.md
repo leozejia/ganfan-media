@@ -1,20 +1,12 @@
-# Editorial Illustration
+# Legacy: Editorial Illustration
 
-Use this style for long essays, personal-IP posts, and abstract technology narratives.
+This local style has been migrated to Open Visual Grammar:
 
-## Best for
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/canon/editorial-illustration/FRAMEWORK.md
+```
 
-- The article is reflective or narrative.
-- The image should carry mood instead of instructions.
-- The title does not fit a short big-character phrase.
+Do not use this file as the source of truth.
 
-## Rules
-
-- Use one metaphor and one emotional temperature.
-- Avoid generated text unless typography is added manually later.
-- Prefer tactile texture, human scale, and strong composition over generic AI symbols.
-- The image should feel like an editorial illustration, not a software product banner.
-
-## Optional archived references
-
-If the operator requests a specific older visual flavor, load one archived YAML style from `archive/` and translate it into the prompt. Do not load every archived style.
+Use `editorial-illustration` when essays or abstract narratives need mood,
+metaphor, and human scale more than immediate instruction.

@@ -9,12 +9,20 @@ description: Plan, generate, and export article visuals for GanFan / SorryCode a
 
 Use this skill as the image director for a article package.
 
+This is an execution skill. It owns GanFan article asset paths, channel sizes,
+image generation calls, and final exports. Reusable visual methodology belongs
+to:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar
+```
+
 It decides:
 
 1. whether an image is worth making;
 2. which channel sizes are required;
-3. which visual style fits the job;
-4. what prompt/brief should be used;
+3. which Open Visual Grammar canon fits the job;
+4. what visual score and runtime prompt should be used;
 5. how to call `sorrycode-image2`;
 6. how to export final channel-ready files.
 
@@ -31,7 +39,8 @@ assets/
 
 _work/images/
 ├── cover-brief.md
-├── prompt.txt
+├── score.md
+├── runtime-prompt.txt
 ├── selected-source.png
 ├── rejected/
 └── sorrycode-image2-attempt-N/
@@ -72,16 +81,31 @@ Use channel-specific names such as `assets/cover-wechat.png` only when one packa
 
 Do not invent ratios from memory. If the target is unclear, write the brief with `target: undecided` and ask the operator before generating.
 
-### 3. Choose the visual route
+### 3. Choose the visual canon
 
-Read `styles/index.md` first. Then load exactly one active style file:
+Use progressive disclosure. Read the Open Visual Grammar entry point only when
+an image is needed:
 
-- `styles/big-character-poster.md` for the default X/SorryCode hook cover.
-- `styles/screenshot-led-tutorial.md` when real UI proof matters.
-- `styles/editorial-illustration.md` for personal essays and abstract narratives.
-- `styles/minimal-poster.md` for restrained premium covers.
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/README.md
+```
 
-Use screenshot-led visuals only when real screenshots are available or explicitly requested. Do not ask an image model to fabricate UI screenshots.
+Then load exactly one canon:
+
+- `canon/conflict-poster/FRAMEWORK.md` for X hooks, public arguments, hot tools, failure fixes, and sharp concepts.
+- `canon/documentation-hero/FRAMEWORK.md` for SorryCode docs hero images and beginner-friendly concept pages.
+- `canon/proof-screenshot/FRAMEWORK.md` when real UI or command proof matters.
+- `canon/editorial-illustration/FRAMEWORK.md` for personal essays and abstract narratives.
+- `canon/minimal-poster/FRAMEWORK.md` for restrained covers where one object or phrase can carry the idea.
+
+Use `proof-screenshot` only when real screenshots are available or explicitly requested. Do not ask an image model to fabricate UI screenshots.
+
+Archived local style files are legacy references. Do not load them by default.
+If a surface flavor is needed, first choose the canon, then optionally consult:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/flavors/README.md
+```
 
 ### 4. Write `cover-brief.md`
 
@@ -91,15 +115,20 @@ Include:
 - target reader;
 - channel targets and output sizes;
 - click reason;
+- selected Open Visual Grammar canon;
+- visual score;
 - main title text;
 - optional supporting text;
 - visual metaphor;
-- style route and style file used;
 - safe-area notes;
 - forbidden elements;
 - prompt block.
 
-Also write the final prompt to `_work/images/prompt.txt` before generation.
+Also write the visual score to `_work/images/score.md` and the final compiled
+image prompt to `_work/images/runtime-prompt.txt` before generation.
+
+Do not copy one-off runtime prompts back into Open Visual Grammar. Promote only
+stable, reviewed frameworks or examples.
 
 ### 5. Generate source image
 
@@ -148,7 +177,7 @@ If the script cannot run, preserve the source image and record the missing expor
 Open the final image locally when possible. Reject the asset if:
 
 - the main Chinese text is unreadable or wrong;
-- the image looks like generic SaaS UI collage when the route was big-character poster;
+- the image violates the selected canon's anti-patterns;
 - key text is outside the target safe area;
 - the output includes fake logos, QR codes, random text, watermarks, or signatures.
 

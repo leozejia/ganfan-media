@@ -1,4 +1,10 @@
-# Inline Prompt Template
+# Legacy Inline Prompt Template
+
+Updated: 2026-05-14
+
+This file is legacy reference material. New inline images should start from an
+Open Visual Grammar canon and a short visual score, then compile into a runtime
+prompt under the article package's `_work/images/` folder.
 
 适用于正文插图。
 
