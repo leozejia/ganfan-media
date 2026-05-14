@@ -2,7 +2,7 @@
 
 Updated: 2026-05-14
 
-Source inspiration: Tw93, "你不知道的 GEO：AI 可见性的原理、实践与取舍", X Article, 2026-05-01.
+Source inspiration: Tw93, ["你不知道的 GEO：AI 可见性的原理、实践与取舍"](https://x.com/hitw93/status/2050189572999618982), X Article, 2026-05-01.
 
 ## Thesis
 
@@ -121,4 +121,3 @@ Monthly checks should ask:
 - Which missing source page would reduce hallucination the most?
 
 Record recurring problems as page fixes, not prompt hacks.
-
