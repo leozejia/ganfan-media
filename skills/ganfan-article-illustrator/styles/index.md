@@ -33,5 +33,5 @@ If a visual pattern becomes stable, add or update a canon in Open Visual
 Grammar. Keep this skill focused on GanFan article execution: channel sizes,
 asset paths, generation calls, inspection, and exports.
 
-Archived YAML files are legacy flavor notes only. Do not route to them by
+Archived YAML files are legacy treatment notes only. Do not route to them by
 default.

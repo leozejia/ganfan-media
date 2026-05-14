@@ -101,10 +101,10 @@ Then load exactly one canon:
 Use `proof-screenshot` only when real screenshots are available or explicitly requested. Do not ask an image model to fabricate UI screenshots.
 
 Archived local style files are legacy references. Do not load them by default.
-If a surface flavor is needed, first choose the canon, then optionally consult:
+If a surface treatment is needed, first choose the canon, then optionally consult:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/flavors/README.md
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/treatments/README.md
 ```
 
 ### 4. Write `cover-brief.md`
