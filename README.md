@@ -19,6 +19,7 @@ The root `AGENTS.md` defines repository-level operating rules.
 - `skills/ganfan-article-illustrator/` — image planning, generation coordination, and channel exports.
 - `skills/source-research/` — factual source collection and public/private boundaries.
 - `channels/` — publishing profiles and platform defaults.
+- `marketing/` — long-lived SEO, GEO, and AI visibility strategy for operations.
 - `ganfan-knowledge-vault/` — migrated knowledge vault and long-term source material.
 - `assets/` — reusable media assets.
 - `docs/` — strategy, workflow, and migration notes.
