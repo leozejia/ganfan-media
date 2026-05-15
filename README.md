@@ -30,6 +30,7 @@ The root `AGENTS.md` defines repository-level operating rules.
 2. Write `brief.md`.
 3. Preserve source facts in `sources.md`.
 4. Write channel-ready drafts in `x.md` and `sorrycode.md`.
-5. Use `ganfan-article-illustrator` only if image assets are useful or required; final usable images go in `assets/`, process files go in `_work/`.
+5. Use `ganfan-article-illustrator` only if image assets are useful or required; visual decisions go in `visual.md`, selected delivery files go in `assets/`, and process files go in `_work/visual-runs/`.
 6. Use `ganfan-distribution-agent` for WeChat or X Article publishing.
 7. Record status and links in `publish.md`.
+8. Run `scripts/validate-visual-structure.sh` before committing visual workflow changes.

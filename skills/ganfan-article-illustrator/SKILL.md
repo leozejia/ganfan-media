@@ -1,17 +1,17 @@
 ---
 name: ganfan-article-illustrator
-description: Plan, generate, and export article visuals for GanFan / SorryCode article packages. Use whenever a article needs an X cover, WeChat cover, SorryCode docs hero, tutorial screenshot, generated poster, or image asset. This skill owns channel size decisions, cover briefs, pattern selection, calling sorrycode-image2, and exporting cropped delivery images.
+description: Plan, generate, and export article visuals for GanFan / SorryCode article packages. Use whenever an article needs an X cover, WeChat cover, SorryCode docs hero, tutorial screenshot, generated poster, or image asset. This skill owns visual.md decisions, channel sizes, pattern selection, calling sorrycode-image2, and exporting cropped delivery images.
 ---
 
 # GanFan Article Illustrator
 
 ## Role
 
-Use this skill as the image director for a article package.
+Use this skill as the image director for an article package.
 
-This is an execution skill. It owns GanFan article asset paths, channel sizes,
-image generation calls, and final exports. Reusable visual methodology belongs
-to:
+This is an execution skill. It owns GanFan article asset paths, `visual.md`,
+channel sizes, image generation calls, and final exports. Reusable visual
+methodology belongs to:
 
 ```text
 /Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar
@@ -22,7 +22,7 @@ It decides:
 1. whether an image is worth making;
 2. which channel sizes are required;
 3. which Open Visual Grammar pattern fits the job;
-4. what visual score and runtime prompt should be used;
+4. what visual score and runtime run should be used;
 5. how to call `sorrycode-image2`;
 6. how to export final channel-ready files.
 
@@ -30,25 +30,31 @@ It decides:
 
 ## Default output paths
 
-For a article package, write assets under:
+For an article package, write assets under:
 
 ```text
 assets/
 ├── cover.png
 └── inline-01.png
 
-_work/images/
-├── cover-brief.md
-├── score.md
-├── runtime-prompt.txt
-├── selected-source.png
-├── rejected/
-└── sorrycode-image2-attempt-N/
+_work/
+└── visual-runs/
+    └── YYYY-MM-DD-NNN/
+        ├── runtime-prompt.md
+        ├── selected-source.png
+        ├── diagnostics.md
+        ├── critique.md
+        └── rejected/
 ```
 
-Use only the files that are needed. `assets/` is the asset surface; `_work/` is the process surface.
+Use only the files that are needed. `visual.md` is the decision surface,
+`assets/` is the delivery surface, and `_work/visual-runs/` is the process
+surface.
 
 Default to one `assets/cover.png`. Add channel-specific names only when one package needs multiple different cover crops.
+
+Keep `assets/` limited to selected delivery files. Do not route a new article
+from an old runtime prompt.
 
 ## Workflow
 
@@ -62,7 +68,7 @@ Generate an image only when it helps one of these jobs:
 - explain a visual/design/PPT/video topic;
 - satisfy an explicit user request for an asset.
 
-If not needed, record `Image decision: no image needed` in `brief.md` and stop.
+If not needed, record `Image decision: no image needed` in `visual.md` and stop.
 
 ### 2. Choose delivery targets before prompting
 
@@ -104,7 +110,7 @@ docs/visual-incubation/pattern-candidates.md
 If real UI proof matters, use a real screenshot and follow the screenshot notes
 there. Do not ask an image model to fabricate UI screenshots.
 
-### 4. Write `cover-brief.md`
+### 4. Write `visual.md`
 
 Include:
 
@@ -114,15 +120,16 @@ Include:
 - click reason;
 - selected Open Visual Grammar pattern;
 - visual score;
-- main title text;
-- optional supporting text;
-- visual metaphor;
-- safe-area notes;
-- forbidden elements;
-- prompt block.
+- selected assets;
+- run policy;
+- forbidden elements.
 
-Also write the visual score to `_work/images/score.md` and the final compiled
-image prompt to `_work/images/runtime-prompt.txt` before generation.
+Do not write runtime prompts into `visual.md`. Runtime prompts belong only inside
+one run directory:
+
+```text
+_work/visual-runs/YYYY-MM-DD-NNN/runtime-prompt.md
+```
 
 Do not copy one-off runtime prompts back into Open Visual Grammar. Promote only
 stable, reviewed patterns or pattern-local examples.
@@ -137,13 +144,12 @@ Default source sizes:
 - normal horizontal covers: `1536x1024`;
 - square thumbnails: `1024x1024`.
 
-Do not silently use experimental high-resolution sizes. If high-res is required, follow the `sorrycode-image2` size guide and document the risk in `cover-brief.md`.
+Do not silently use experimental high-resolution sizes. If high-res is required, follow the `sorrycode-image2` size guide and document the risk in `visual.md`.
 
 Save diagnostics in a numbered attempt folder when retrying:
 
 ```text
-_work/images/sorrycode-image2-attempt-1/
-_work/images/sorrycode-image2-attempt-2/
+_work/visual-runs/YYYY-MM-DD-NNN/
 ```
 
 ### 6. Export delivery images
@@ -154,7 +160,7 @@ On macOS, use the bundled script:
 
 ```bash
 skills/ganfan-article-illustrator/scripts/resize_cover.sh \
-  _work/images/selected-source.png \
+  _work/visual-runs/YYYY-MM-DD-NNN/selected-source.png \
   assets/cover.png \
   x-article-cover
 ```

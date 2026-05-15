@@ -1,6 +1,6 @@
 # Media Operations Workflow
 
-Updated: 2026-05-09
+Updated: 2026-05-15
 
 This is the default workflow for GanFan / SorryCode media work. Use this document as the content-production entry point. Do not use a separate content-production skill.
 
@@ -27,11 +27,12 @@ articles/YYYY-MM-DD-topic-slug/
 ├── sources.md
 ├── x.md
 ├── sorrycode.md
+├── visual.md
 ├── assets/
 │   ├── cover.png
 │   └── inline-01.png
 ├── _work/
-│   └── images/
+│   └── visual-runs/
 ├── outputs/
 │   └── wechat/
 └── publish.md
@@ -116,19 +117,28 @@ Images are optional. Use `ganfan-article-illustrator` when the package needs:
 - generated poster or article visual.
 
 The illustrator skill owns channel size decisions, article asset paths,
-visual-score compilation, `sorrycode-image2` generation, and final cropped
-exports. Stable visual patterns belong in Open Visual Grammar, not in per-article
-prompt files.
+`visual.md`, visual-score compilation, `sorrycode-image2` generation, and final
+cropped exports. Stable visual patterns belong in Open Visual Grammar, not in
+per-article prompt files.
 
 Do not guess image ratio in article drafts.
+
+`visual.md` is the only visual decision entry point for an article package. It
+records image decision, selected pattern, visual score, target assets, selected
+assets, and run policy. Runtime prompts are execution records, not planning
+sources.
 
 Keep `assets/` as the asset surface:
 
 - use `assets/cover.png` when the package needs one default cover;
 - use explicit names only when channels need different crops, such as `assets/cover-x-article.png` and `assets/cover-wechat.png`;
 - use `assets/inline-01.png`, `assets/inline-02.png` for body images;
-- put visual scores, runtime prompts, API diagnostics, rejected images, and temporary exports under `_work/images/`;
+- put runtime prompts, API diagnostics, rejected images, and temporary exports under `_work/visual-runs/<run-id>/`;
 - drafts and publish logs should reference `assets/`, not `_work/`.
+- keep `assets/` limited to selected delivery files.
+
+Run `scripts/validate-visual-structure.sh` before committing visual workflow or
+article asset changes.
 
 ### 5. Publish
 

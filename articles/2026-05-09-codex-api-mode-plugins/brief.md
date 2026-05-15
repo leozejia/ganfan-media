@@ -18,4 +18,4 @@ SorryCode should be a long-lived manual plugin configuration guide. It should st
 
 ## Image Decision
 
-Image needed. The hook depends on a visible contrast: "left sidebar plugin entry is grey" versus "the Codex input box can show available plugins after setup." Use one X Article cover and one optional body image, not multiple tutorial screenshots. Cover work files live under `_work/images/`; usable images live under `assets/`.
+Image needed. The hook depends on a visible contrast: "left sidebar plugin entry is grey" versus "the Codex input box can show available plugins after setup." Use one X Article cover and one optional body image, not multiple tutorial screenshots. Visual decisions live in `visual.md`; selected delivery assets live under `assets/`.

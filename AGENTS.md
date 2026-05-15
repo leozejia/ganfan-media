@@ -46,11 +46,12 @@ articles/YYYY-MM-DD-topic-slug/
 ├── sources.md
 ├── x.md
 ├── sorrycode.md
+├── visual.md
 ├── assets/
 │   ├── cover.png
 │   └── inline-01.png
 ├── _work/
-│   └── images/
+│   └── visual-runs/
 ├── outputs/
 │   └── wechat/
 └── publish.md
@@ -61,8 +62,9 @@ articles/YYYY-MM-DD-topic-slug/
 - `brief.md` defines audience, angle, funnel target, channels, image need, and factual boundary.
 - `sources.md` preserves raw material and private notes; drafts must not invent claims outside sources.
 - `x.md` and `sorrycode.md` are channel-ready outputs.
+- `visual.md` is the visual decision source of truth: image decision, selected pattern, visual score, target assets, selected assets, and run policy.
 - `assets/` stores only usable article assets, usually `cover.png` and optional body images such as `inline-01.png`.
-- `_work/` stores prompts, diagnostics, failed generations, temporary exports, and other process files.
+- `_work/visual-runs/` stores runtime prompts, diagnostics, failed generations, temporary exports, and other process files.
 - `publish.md` records target channel, status, URL if available, automation command, metrics, and follow-up notes.
 - For X, teach one real thing before linking to SorryCode.
 - For SorryCode, provide concrete beginner value, direct steps, and relevant docs/Skills entry points.
@@ -74,9 +76,12 @@ articles/YYYY-MM-DD-topic-slug/
 - Generate source images through `sorrycode-image2` when needed.
 - Export final files with exact channel presets before publishing.
 - Images are optional; use them only as a cover hook or when screenshots help the user act.
+- Keep `assets/` limited to selected delivery files.
+- Runtime prompts are execution records, not planning entry points.
 
 ## Git Rules
 
 - Commit coherent operational units: one workflow migration, one article package, or one publishing automation change.
 - Do not commit generated caches, dependency folders, local browser profiles, or secret files.
+- Run `scripts/validate-visual-structure.sh` before committing visual workflow or article asset changes.
 - Before publishing or committing, check `git status --short` and review unexpected binary or credential-like files.

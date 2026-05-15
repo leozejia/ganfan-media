@@ -14,7 +14,6 @@ Use this reference only to remember the workflow-level boundary:
 
 - This skill decides whether an image is needed.
 - `sorrycode-image2` owns API key checks, request execution, streaming diagnostics, and output saving.
-- Old Tuzi notes are archived under `archive/tuzi-runtime.md` and should not be used for new SorryCode operations.
 
 ## Wide-cover stability
 

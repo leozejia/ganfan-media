@@ -1,6 +1,6 @@
 # Current Operations Handoff
 
-Updated: 2026-05-12
+Updated: 2026-05-15
 
 This handoff is for the next COO / media-ops agent session. Start future operations work from `ganfan-media`, not `ganfan-nexus`.
 
@@ -182,6 +182,7 @@ brief.md
 sources.md
 x.md
 sorrycode.md
+visual.md
 assets/cover.png
 outputs/wechat/article.html
 publish.md
@@ -209,12 +210,6 @@ It is exact X Article size:
 1500x600, 5:2
 ```
 
-Source candidate:
-
-```text
-articles/2026-05-10-codex-history-sessions/assets/cover-5x2-candidate-2.png
-```
-
 ### Agent Context Token Economics
 
 Path:
@@ -230,8 +225,9 @@ brief.md
 sources.md
 x.md
 sorrycode.md
+visual.md
 publish.md
-assets/.gitkeep
+assets/cover.png
 outputs/.gitkeep
 ```
 
@@ -284,13 +280,17 @@ assets/cover.png
 assets/inline-01.png
 ```
 
-Put prompts, diagnostics, rejected images, and temporary work under:
+Use `visual.md` as the visual decision source of truth. Put runtime prompts,
+diagnostics, rejected images, and temporary work under:
 
 ```text
-_work/images/
+_work/visual-runs/<run-id>/
 ```
 
 `articles/**/_work/` is ignored by git.
+
+Run `scripts/validate-visual-structure.sh` before committing visual workflow or
+article asset changes.
 
 ### Agent Tips block policy
 

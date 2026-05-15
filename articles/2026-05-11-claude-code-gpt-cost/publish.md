@@ -8,7 +8,7 @@
 - Notes:
   - First draft focuses on independent AI literacy, not SorryCode product promotion.
   - Hook uses anonymized internal observation only.
-  - Selected `cover-option-2.png` as `assets/cover.png` because the X hook is clearer: `能跑 ≠ 划算`.
+  - Selected `assets/cover.png` because the X hook is clear: `能跑 ≠ 划算`.
   - Cover generated through `sorrycode-image2`, exported with `x-article-cover` preset, and visually checked for readable main title.
   - Needs operator review before publishing.
 
