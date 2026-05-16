@@ -35,7 +35,7 @@ Purpose: teach context economics for agent users beyond coding. Core thesis: con
 Next AI literacy article in the current P0 queue:
 
 ```text
-LLM 账单不是只有输入和输出
+看懂 AI 账单的 5 个字段：别再只盯 output tokens
 ```
 
 This should come before:
@@ -49,6 +49,27 @@ cost and agent context economics. The next clean educational step is a broader
 billing-literacy article that explains usage breakdowns without making the
 piece about any specific gateway. The gateway-transparency article should
 follow after readers understand billing fields.
+
+Current traffic lesson:
+
+```text
+Visible tool problem + direct result > pure mechanism explanation.
+```
+
+The strongest previous post was `Codex API mode plugins` because it gave users a
+clear outcome: fix a grey / missing plugin entry. Future AI-literacy pieces
+should still teach real mechanisms, but the package must give the reader a
+takeaway artifact first: checklist, command, diagnostic flow, template, decision
+tree, or before/after fix.
+
+New article package:
+
+```text
+articles/2026-05-16-ai-billing-five-fields/
+```
+
+This package is prepared only to the brief/source-boundary stage. Do not draft
+or publish until official OpenAI and Anthropic billing / usage docs are checked.
 
 ## Repositories
 

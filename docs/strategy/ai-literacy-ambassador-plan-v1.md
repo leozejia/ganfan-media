@@ -1,6 +1,6 @@
 # AI Literacy Ambassador Plan v1
 
-Updated: 2026-05-11
+Updated: 2026-05-16
 
 ## Role
 
@@ -22,6 +22,44 @@ Good X posts come from a real contradiction:
 - a feature is technically possible, but not the default beginner path.
 
 The public lesson should be independent. The SorryCode link is only a path to a cleaner, complete guide.
+
+## Traffic Reality
+
+Current observation:
+
+- `Codex API mode plugins` got the strongest traffic because it solved a visible
+  tool problem: the plugin entry looked grey / missing, and the article gave a
+  direct configuration path.
+- Later mechanism-heavy pieces were stronger as education, but weaker as
+  traffic assets. They taught useful concepts, yet the reader did not instantly
+  know what they would get by reading.
+
+Current adjustment:
+
+- Lead with a concrete result, then explain the mechanism.
+- Prefer titles that promise a usable artifact: checklist, command, decision
+  tree, field guide, template, diagnostic flow, or before/after fix.
+- Keep the contradiction sharp and visible. The reader should see what belief is
+  being corrected before they click.
+- Educational value still matters, but it should be packaged as something the
+  reader can use immediately.
+
+Bad direction:
+
+```text
+LLM 账单不是只有输入和输出
+```
+
+Better traffic direction:
+
+```text
+看懂 AI 账单的 5 个字段：别再只盯 output tokens
+```
+
+The second version gives the reader a thing to take away: a five-field usage
+breakdown checklist. It also creates a clearer conflict: many users stare at
+output tokens, while the bill may be shaped by input, cache creation, cache read,
+provider multiplier, or fallback behavior.
 
 ## Editorial Standard
 
@@ -194,9 +232,10 @@ Status updated: 2026-05-16
    - Public lesson: stable context goes into files; temporary context gets distilled or discarded.
    - Needs sources: OpenAI / Anthropic context, caching, compaction, and AGENTS.md docs.
 
-3. `LLM 账单不是只有输入和输出` (next)
-   - Conflict: users look at output length, but cost may come from repeated input, cache creation, or cache misses.
+3. `看懂 AI 账单的 5 个字段：别再只盯 output tokens` (next)
+   - Conflict: users look at output length, but cost may come from repeated input, cache creation, cache read, provider multiplier, or fallback behavior.
    - Public lesson: read usage breakdown before blaming the model.
+   - Reader takeaway: a five-field checklist for reading AI agent bills.
    - Needs sources: official billing / usage docs.
 
 4. `中转站最容易暗箱操作的 4 个地方`
