@@ -2,11 +2,13 @@
 
 Date: 2026-05-16
 
-Purpose: prepare operator review for which generated images should become
-public-safe Open Visual Grammar `refs/` or pattern-local examples.
+Purpose: record operator review for which generated images should become
+public-safe Open Visual Grammar `refs/`.
 
-Do not copy images into `open-visual-grammar` until the operator selects them.
-Temporary test outputs stay in article `_work/visual-runs/`.
+Temporary test outputs stay in article `_work/visual-runs/`. Selected reference
+images can be copied into `open-visual-grammar/patterns/<pattern>/refs/`.
+Runtime prompts remain in GanFan `_work` as run provenance and should not be
+copied into Open Visual Grammar as stable method.
 
 ## Selection Rule
 
@@ -49,7 +51,21 @@ Candidate review entry:
 articles/2026-05-12-agent-context-token-economics/_work/visual-runs/2026-05-16-pattern-seed-test-narrative-journal-infographic/review.html
 ```
 
-Operator already judged the group stable. Select 1-2 candidates that best show:
+Operator already judged the group stable.
+
+Selected reference:
+
+```text
+candidate-03
+```
+
+Promoted to:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/narrative-journal-infographic/refs/token-economics-journal-infographic-01.png
+```
+
+Selected because it best shows:
 
 - handdrawn information structure;
 - comparison or workflow;
@@ -65,7 +81,21 @@ Candidate review entry:
 articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-16-pattern-seed-test-flowing-gaze-minimal-cover/review.html
 ```
 
-Operator already judged the group stable. Select 1-2 candidates that best show:
+Operator already judged the group stable.
+
+Selected reference:
+
+```text
+candidate-02
+```
+
+Promoted to:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/flowing-gaze-minimal-cover/refs/codex-history-flowing-gaze-01.png
+```
+
+Selected because it best shows:
 
 - one subject or viewpoint;
 - strong negative space;
@@ -81,7 +111,23 @@ Candidate review entry:
 articles/2026-05-11-claude-code-gpt-cost/_work/visual-runs/2026-05-16-pattern-seed-test-pixel-retro/review.html
 ```
 
-Operator already judged the group stable. Select 1-2 candidates that best show:
+Operator already judged the group stable.
+
+Selected references:
+
+```text
+candidate-01
+candidate-03
+```
+
+Promoted to:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/pixel-retro/refs/agent-runtime-cost-pixel-01.png
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/pixel-retro/refs/agent-runtime-cost-pixel-02.png
+```
+
+Selected because they best show:
 
 - visible pixel blocks;
 - game-system logic;
@@ -98,8 +144,23 @@ articles/2026-05-12-agent-context-token-economics/_work/visual-runs/2026-05-16-p
 articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-16-random-mechanism-test-eastern-texture-handdrawn/review.html
 ```
 
-Operator judged the random mechanism test passed. Select 1-2 candidates that
-best show:
+Operator judged the main run and random mechanism test passed.
+
+Selected references:
+
+```text
+candidate-01 from main pattern-seed test
+candidate-03 from random mechanism test
+```
+
+Promoted to:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/eastern-texture-handdrawn/refs/token-economics-eastern-texture-01.png
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/eastern-texture-handdrawn/refs/codex-history-eastern-texture-02.png
+```
+
+Selected because they best show:
 
 - paper texture;
 - loose ink line;
@@ -107,9 +168,7 @@ best show:
 - whitespace;
 - reflective metaphor.
 
-## Awaiting Explicit Operator Judgment
-
-These groups have been generated but not explicitly marked stable yet.
+## Additional Operator Judgment
 
 ### `whimsical-journal-sketch`
 
@@ -119,7 +178,30 @@ Review entry:
 articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-16-pattern-seed-test-whimsical-journal-sketch/review.html
 ```
 
-Ask the operator whether it passes before promoting refs.
+Operator judgment:
+
+```text
+Passed.
+```
+
+Selected reference:
+
+```text
+candidate-03
+```
+
+Promoted to:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/whimsical-journal-sketch/refs/codex-history-whimsical-journal-01.png
+```
+
+Reason:
+
+```text
+The group showed stable visual identity, and candidate-03 is strong enough to
+serve as the first public reference.
+```
 
 ### `minimal-handdrawn-linework`
 
@@ -129,7 +211,18 @@ Review entry:
 articles/2026-05-11-claude-code-gpt-cost/_work/visual-runs/2026-05-16-pattern-seed-test-minimal-handdrawn-linework/review.html
 ```
 
-Ask the operator whether it passes before promoting refs.
+Operator judgment:
+
+```text
+Temporarily keep the pattern, but do not promote any image from this run.
+```
+
+Reason:
+
+```text
+No candidate in the current run is strong enough to serve as a reference.
+The pattern remains a seed pending a better production example.
+```
 
 ## Rejected
 
@@ -144,15 +237,13 @@ articles/2026-05-09-codex-api-mode-plugins/_work/visual-runs/2026-05-16-pattern-
 Do not promote. The operator rejected this pattern because it is visually
 acceptable but too generic to stand as an independent reusable pattern.
 
-## Operator Decision Needed
-
-For each passed pattern without refs, pick candidates by number:
+## Operator Selection Summary
 
 ```text
-narrative-journal-infographic: candidate-?
-flowing-gaze-minimal-cover: candidate-?
-pixel-retro: candidate-?
-eastern-texture-handdrawn: candidate-?
-whimsical-journal-sketch: pass/reject, candidate-?
-minimal-handdrawn-linework: pass/reject, candidate-?
+narrative-journal-infographic: candidate-03
+flowing-gaze-minimal-cover: candidate-02
+pixel-retro: candidate-01, candidate-03
+eastern-texture-handdrawn: candidate-01 from main, candidate-03 from random
+whimsical-journal-sketch: passed, candidate-03
+minimal-handdrawn-linework: kept as seed, no reference promoted
 ```

@@ -1,6 +1,6 @@
 # Current Operations Handoff
 
-Updated: 2026-05-15
+Updated: 2026-05-16
 
 This handoff is for the next COO / media-ops agent session. Start future operations work from `ganfan-media`, not `ganfan-nexus`.
 
@@ -398,8 +398,8 @@ Pattern seed status after operator review:
 
 ```text
 passed: eastern-texture-handdrawn
-awaiting explicit judgment: whimsical-journal-sketch
-awaiting explicit judgment: minimal-handdrawn-linework
+passed: whimsical-journal-sketch
+seed retained without promoted reference: minimal-handdrawn-linework
 rejected: elegant-minimal-art
 ```
 
@@ -419,6 +419,32 @@ Rejected on 2026-05-16: `elegant-minimal-art`. Reason: it was visually
 acceptable but too generic to stand as an independent pattern. It overlaps with
 other calm handdrawn illustration seeds and risks becoming a safe default
 instead of a reusable visual abstraction.
+
+Operator-selected Open Visual Grammar refs promoted on 2026-05-16:
+
+```text
+narrative-journal-infographic: candidate-03
+flowing-gaze-minimal-cover: candidate-02
+pixel-retro: candidate-01, candidate-03
+eastern-texture-handdrawn: candidate-01 from main, candidate-03 from random
+whimsical-journal-sketch: candidate-03
+minimal-handdrawn-linework: no reference promoted
+```
+
+The generated PNGs were copied into:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/*/refs/
+```
+
+The corresponding runtime prompts remain only in:
+
+```text
+articles/*/_work/visual-runs/*/candidate-*/runtime-prompt.md
+```
+
+Do not copy these one-off prompts into Open Visual Grammar. They are provenance
+for the selected images, not the stable visual method.
 
 Small regression pass:
 
