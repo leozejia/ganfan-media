@@ -35,6 +35,20 @@ Review entry:
 articles/2026-05-12-agent-context-token-economics/_work/visual-runs/2026-05-16-pattern-seed-test-eastern-texture-handdrawn/review.html
 ```
 
+Operator judgment:
+
+```text
+Passed.
+```
+
+Reason:
+
+```text
+The pattern remained visually stable and distinctive. A later random mechanism
+test also paired it with a less typical tool tutorial source and still produced
+acceptable results.
+```
+
 ### `whimsical-journal-sketch`
 
 Article:
@@ -107,7 +121,20 @@ articles/2026-05-11-claude-code-gpt-cost/_work/visual-runs/2026-05-16-pattern-se
 
 ## Current Status
 
-Awaiting operator judgment.
+Current operator judgment:
+
+Passed:
+
+```text
+eastern-texture-handdrawn
+```
+
+Awaiting explicit operator judgment:
+
+```text
+whimsical-journal-sketch
+minimal-handdrawn-linework
+```
 
 Rejected:
 
@@ -132,3 +159,41 @@ During this run, `sorrycode-image2` was adjusted to support:
 Future GanFan visual runs should use this flag whenever the run already has
 `runtime-prompt.md`, so the API runtime does not create duplicate `prompt.txt`
 files.
+
+## Random Mechanism Test
+
+Run:
+
+```text
+articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-16-random-mechanism-test-eastern-texture-handdrawn/review.html
+```
+
+Random pairing:
+
+```text
+pattern: eastern-texture-handdrawn
+source: articles/2026-05-10-codex-history-sessions/x.md
+```
+
+Why it mattered:
+
+```text
+`eastern-texture-handdrawn` is better suited to slower reflective topics, while
+`codex-history-sessions` is a practical tool tutorial. This tested whether the
+mechanism could preserve pattern identity without requiring a perfect source fit.
+```
+
+Operator judgment:
+
+```text
+Passed. The result is good enough for the baseline mechanism. Future work can
+continue to polish the style, but the pattern should remain in its current
+state for now.
+```
+
+Runtime notes:
+
+- `sorrycode-image2` was called with `--prompt-file` and `--no-prompt-log`.
+- No `prompt.txt` was written.
+- `candidate-03` hit HTTP 524 once, then succeeded at `1024x1024`.
+- `scripts/validate-visual-structure.sh` passed.

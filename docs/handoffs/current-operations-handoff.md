@@ -394,23 +394,31 @@ Remaining pattern seed review generated on 2026-05-16:
 docs/visual-incubation/evals/2026-05-16-remaining-pattern-seed-review.md
 ```
 
-Patterns awaiting operator judgment:
+Pattern seed status after operator review:
 
 ```text
-eastern-texture-handdrawn
-whimsical-journal-sketch
-minimal-handdrawn-linework
+passed: eastern-texture-handdrawn
+awaiting explicit judgment: whimsical-journal-sketch
+awaiting explicit judgment: minimal-handdrawn-linework
+rejected: elegant-minimal-art
 ```
 
-Rejected on 2026-05-16:
+Random mechanism test:
 
 ```text
-elegant-minimal-art
+articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-16-random-mechanism-test-eastern-texture-handdrawn/review.html
 ```
 
-Reason: it was visually acceptable but too generic to stand as an independent
-pattern. It overlaps with other calm handdrawn illustration seeds and risks
-becoming a safe default instead of a reusable visual abstraction.
+Operator judgment: passed. The mechanism used the bilingual
+`eastern-texture-handdrawn` pattern with a randomly selected `codex-history`
+tool tutorial source. The result satisfied the baseline requirement. Keep the
+pattern in its current state; future work can polish references/examples without
+editing the core pattern text.
+
+Rejected on 2026-05-16: `elegant-minimal-art`. Reason: it was visually
+acceptable but too generic to stand as an independent pattern. It overlaps with
+other calm handdrawn illustration seeds and risks becoming a safe default
+instead of a reusable visual abstraction.
 
 Small regression pass:
 
