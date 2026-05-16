@@ -14,6 +14,8 @@ Use this reference only to remember the workflow-level boundary:
 
 - This skill decides whether an image is needed.
 - `sorrycode-image2` owns API key checks, request execution, streaming diagnostics, and output saving.
+- When this workflow already stores `runtime-prompt.md`, call `sorrycode-image2`
+  with `--no-prompt-log` to avoid duplicate prompt files.
 
 ## Wide-cover stability
 

@@ -118,15 +118,22 @@ Images are optional. Use `ganfan-article-illustrator` when the package needs:
 
 The illustrator skill owns channel size decisions, article asset paths,
 `visual.md`, visual-score compilation, `sorrycode-image2` generation, and final
-cropped exports. Stable visual patterns belong in Open Visual Grammar, not in
-per-article prompt files.
+cropped exports. Reusable visual patterns belong in Open Visual Grammar, not in
+per-article prompt files or execution skills.
 
 Do not guess image ratio in article drafts.
 
 `visual.md` is the only visual decision entry point for an article package. It
-records image decision, selected pattern, visual score, target assets, selected
-assets, and run policy. Runtime prompts are execution records, not planning
-sources.
+records image decision, asset job, primary draft used, selected pattern, visual
+score, target assets, selected assets, and run policy. Runtime prompts are
+execution records, not planning sources.
+
+For image work, the asset job defines the context unit. Choose the delivery
+channel first, then read the smallest relevant material for that asset. Start
+from the channel draft or source that the asset will serve. Add supporting
+sources only when they change the audience, factual boundary, visual claim,
+delivery constraint, or reuse target. The same core thesis may produce
+different X, SorryCode, XHS, and WeChat images.
 
 Keep `assets/` as the asset surface:
 

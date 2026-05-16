@@ -254,6 +254,194 @@ Primary sources:
 
 ## Important lessons from latest work
 
+### Open Visual Grammar correction
+
+The first visual-grammar benchmark drifted in the wrong direction: it tested
+whether image models could handle many visual jobs, not whether a reusable
+visual design method could be reproduced.
+
+That benchmark package was removed from `ganfan-media`.
+
+Current direction:
+
+- Open Visual Grammar should first stabilize the proven big-character poster
+  method used by recent GanFan / SorryCode X covers.
+- The public stable pattern is now:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/big-character-poster/PATTERN.md
+```
+
+- Broader jobs such as docs hero, proof screenshot, and non-coding agent visuals
+  should stay in GanFan incubation until they have operator-approved production
+  references.
+- Benchmarking should test method reproduction across topics, not general image
+  model capability.
+
+When testing visuals, use:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/evals/cases/big-character-poster-reproduction.md
+```
+
+Each topic still needs three cards, but the three cards should be different
+visual-language solutions for the same article argument. They can vary evidence
+object, title relationship, poster temperament, metaphor distance, and material
+language. Do not force fixed composition labels when they weaken the idea.
+
+The first clean reproduction run completed 12 cards across four historical
+articles. Operator judgment: the style direction was close, but the content
+expression did not reach the best historical covers. The strongest group was
+`Claude Code GPT Cost` because its argument was naturally sharp: "can run" vs
+"cost-efficient".
+
+The durable lesson is that `big-character-poster` needs visual judgment before
+prompting:
+
+```text
+reader pain -> false belief -> correction -> concrete evidence -> visual action
+```
+
+Do not generate from topic + style alone. The poster needs article-specific
+evidence and a visual action that makes the correction visible.
+
+Important correction from the operator: source selection should be a positive
+inclusion protocol. One package can produce X, SorryCode, WeChat, XHS, and other
+publication assets. The current asset job defines the image context unit. For
+an X-cover test, start from the X draft as the primary source. Add supporting
+sources only when they change the audience, factual boundary, visual claim,
+delivery constraint, or reuse target.
+
+Public-safe eval record:
+
+```text
+docs/visual-incubation/evals/2026-05-15-big-character-reproduction.md
+```
+
+Important correction after the v1 stability pass: older GanFan image-generation
+flavors from `ganfan-article-illustrator/styles/archive/*.yaml` are reusable
+visual pattern seeds. Treating them as legacy prompt noise was wrong.
+
+They have been recovered into:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/
+```
+
+Extract them one at a time into proper patterns through references, boundaries,
+three-card tests, and operator judgment.
+
+Current recovered seed patterns:
+
+```text
+eastern-texture-handdrawn
+pixel-retro
+narrative-journal-infographic
+whimsical-journal-sketch
+flowing-gaze-minimal-cover
+minimal-handdrawn-linework
+```
+
+Do not recreate a separate `styles/` layer. In this project, `patterns` are
+reusable visual abstractions. A pattern is defined by stable visual invariants
+and transfer boundaries. Recommended scenes help selection but do not lock the
+pattern to one channel.
+
+Next test plan:
+
+1. Static check:
+   - no `styles/` entry point;
+   - each seed has invariants, recommended cases, weak-fit cases, and avoid
+     rules;
+   - `ganfan-article-illustrator` points agents to `patterns/`.
+2. Single-pattern three-card test:
+   - start with `narrative-journal-infographic`,
+     `flowing-gaze-minimal-cover`, and `pixel-retro`;
+   - one real article/source per pattern;
+   - generate exactly three candidates;
+   - operator judges final images only.
+3. Cross-topic stability test:
+   - only after the single-pattern test works;
+   - one pattern, three topics, three cards each;
+   - pass only if the visual invariants survive topic changes and at least one
+     candidate per topic is close to usable.
+
+Record failed runs as pattern boundaries or anti-patterns. Do not turn runtime
+prompts into the source of truth.
+
+2026-05-16 recovered pattern seed stability result:
+
+```text
+docs/visual-incubation/evals/2026-05-16-recovered-pattern-seed-stability.md
+```
+
+Patterns tested:
+
+```text
+narrative-journal-infographic
+flowing-gaze-minimal-cover
+pixel-retro
+```
+
+Operator judgment: all three groups passed. The groups are visually distinct,
+and each group stayed stable across three generated candidates. Preserve these
+three pattern seeds as current stable baselines. Do not keep editing their core
+descriptions unless repeated production failures show the same root cause.
+
+Remaining pattern seed review generated on 2026-05-16:
+
+```text
+docs/visual-incubation/evals/2026-05-16-remaining-pattern-seed-review.md
+```
+
+Patterns awaiting operator judgment:
+
+```text
+eastern-texture-handdrawn
+whimsical-journal-sketch
+minimal-handdrawn-linework
+```
+
+Rejected on 2026-05-16:
+
+```text
+elegant-minimal-art
+```
+
+Reason: it was visually acceptable but too generic to stand as an independent
+pattern. It overlaps with other calm handdrawn illustration seeds and risks
+becoming a safe default instead of a reusable visual abstraction.
+
+Small regression pass:
+
+```text
+articles/2026-05-12-agent-context-token-economics/_work/visual-runs/2026-05-15-design-language-v2-subagent/review.html
+```
+
+Operator judgment: this batch was clearly better. The correction worked because
+`big-character-poster` was reframed as a design language and meta-prompt
+protocol, not a production SOP. The next visual test should expand cautiously
+to two or three historical topics, while preserving the source-contract rule
+and allowing the agent to choose evidence object, title relationship, poster
+temperament, metaphor distance, and material language.
+
+Second stability pass:
+
+```text
+articles/2026-05-09-codex-api-mode-plugins/_work/visual-runs/2026-05-15-big-character-stability/review.html
+articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-15-big-character-stability/review.html
+articles/2026-05-11-claude-code-gpt-cost/_work/visual-runs/2026-05-15-big-character-stability/review.html
+```
+
+Operator judgment: the framework is stable enough to treat
+`big-character-poster` as v1 for GanFan / SorryCode X covers. Keep improving
+examples and adapter notes through real production, but do not redesign the
+architecture unless repeated production failures show the same root cause.
+
+Known issue from the second pass: one `codex-history-sessions` candidate needed
+cropping / size correction. Treat this as a runtime/export quality-gate issue,
+not a visual grammar failure.
+
 ### X Article cover ratio
 
 X Article cover requires `5:2`. Use exact final export:
@@ -291,6 +479,57 @@ _work/visual-runs/<run-id>/
 
 Run `scripts/validate-visual-structure.sh` before committing visual workflow or
 article asset changes.
+
+### `sorrycode-image2` runtime boundary
+
+`sorrycode-image2` is maintained by us at:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-image2
+```
+
+It has been adjusted into a pure SorryCode Images API runtime driver.
+
+Current boundary:
+
+- `open-visual-grammar` owns visual methodology, patterns, scores, adapters, and
+  evals.
+- `ganfan-media` owns article-specific briefs, `visual.md`, runtime run records,
+  selected assets, and operator choices.
+- `sorrycode-image2` owns API key checks, endpoint/model/size/stream handling,
+  request execution, saved images, and diagnostics.
+
+`sorrycode-image2` now supports:
+
+```bash
+--no-prompt-log
+```
+
+Use this flag from GanFan visual runs whenever the workflow already has:
+
+```text
+runtime-prompt.md
+```
+
+Standalone `sorrycode-image2` runs can still write `prompt.txt`; article visual
+runs should not.
+
+Do not restore prompt teaching files such as:
+
+```text
+references/prompt-patterns.md
+```
+
+The skill can document API parameters and placeholder command syntax such as
+`--prompt "<image prompt>"`, but it must not teach cover styles, product hero
+prompts, poster formulas, or reusable visual patterns.
+
+Public story:
+
+```text
+Open Visual Grammar teaches agents how to think visually.
+SorryCode Image2 executes the image runtime through SorryCode.
+```
 
 ### Agent Tips block policy
 

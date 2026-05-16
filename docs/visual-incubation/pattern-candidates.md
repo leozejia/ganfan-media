@@ -19,6 +19,22 @@ A candidate can move to `open-visual-grammar/patterns/` only when it has:
 
 ## Candidates
 
+### Documentation hero
+
+Use when a public docs page or tutorial needs a calm, trustworthy visual that
+supports an operational concept.
+
+Rules:
+
+- Make the page feel useful before reading.
+- Keep the image long-lived and beginner-readable.
+- Use a system map, workspace, ledger, or handoff metaphor only when it clarifies
+  the document.
+- Avoid feed-ad intensity.
+- Do not create fake product UI.
+- Do not promote this to Open Visual Grammar until it has operator-approved
+  production references.
+
 ### Proof screenshot
 
 Use when a reader needs real UI or command proof.
