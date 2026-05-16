@@ -180,19 +180,21 @@ Likely SorryCode anchors:
 
 ## Priority Queue
 
+Status updated: 2026-05-16
+
 ### P0: Produce Next
 
-1. `Claude Code 里能跑 GPT，但不一定该这么跑`
+1. `Claude Code 里能跑 GPT，但不一定该这么跑` (published)
    - Conflict: protocol bridges make it possible, but cache and billing can make it expensive.
    - Public lesson: runtime, protocol, model, and billing are four different layers.
    - Needs sources: OpenAI and Anthropic usage / caching docs.
 
-2. `上下文不是越多越好：Agent 时代的 Token 经济学`
+2. `上下文不是越多越好：Agent 时代的 Token 经济学` (published)
    - Conflict: long context feels powerful, but stale context becomes cost and attention debt.
    - Public lesson: stable context goes into files; temporary context gets distilled or discarded.
    - Needs sources: OpenAI / Anthropic context, caching, compaction, and AGENTS.md docs.
 
-3. `LLM 账单不是只有输入和输出`
+3. `LLM 账单不是只有输入和输出` (next)
    - Conflict: users look at output length, but cost may come from repeated input, cache creation, or cache misses.
    - Public lesson: read usage breakdown before blaming the model.
    - Needs sources: official billing / usage docs.

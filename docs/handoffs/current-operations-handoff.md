@@ -32,6 +32,24 @@ articles/2026-05-12-agent-context-token-economics/
 
 Purpose: teach context economics for agent users beyond coding. Core thesis: context is both asset and liability; stable context belongs in files, temporary context should be distilled or discarded, and cache hit rate is not a session-health signal.
 
+Next AI literacy article in the current P0 queue:
+
+```text
+LLM 账单不是只有输入和输出
+```
+
+This should come before:
+
+```text
+中转站最容易暗箱操作的 4 个地方
+```
+
+Reason: the first two published pieces already covered runtime/protocol/model
+cost and agent context economics. The next clean educational step is a broader
+billing-literacy article that explains usage breakdowns without making the
+piece about any specific gateway. The gateway-transparency article should
+follow after readers understand billing fields.
+
 ## Repositories
 
 ### `ganfan-media`
@@ -399,7 +417,7 @@ Pattern seed status after operator review:
 ```text
 passed: eastern-texture-handdrawn
 passed: whimsical-journal-sketch
-seed retained without promoted reference: minimal-handdrawn-linework
+passed as seed: minimal-handdrawn-linework
 rejected: elegant-minimal-art
 ```
 
@@ -428,7 +446,7 @@ flowing-gaze-minimal-cover: candidate-02
 pixel-retro: candidate-01, candidate-03
 eastern-texture-handdrawn: candidate-01 from main, candidate-03 from random
 whimsical-journal-sketch: candidate-03
-minimal-handdrawn-linework: no reference promoted
+minimal-handdrawn-linework: candidate-01
 ```
 
 The generated PNGs were copied into:
@@ -445,6 +463,33 @@ articles/*/_work/visual-runs/*/candidate-*/runtime-prompt.md
 
 Do not copy these one-off prompts into Open Visual Grammar. They are provenance
 for the selected images, not the stable visual method.
+
+`ganfan-article-illustrator` now consumes Open Visual Grammar directly:
+
+```text
+skills/ganfan-article-illustrator/SKILL.md
+```
+
+For future article visuals, choose exactly one OVG pattern, read that pattern's
+`PATTERN.md`, then read `refs/README.md` and inspect reference images only when
+visual calibration matters. Do not default every X cover to
+`big-character-poster`; use it when the article needs a dominant headline and
+sharp conflict. Seed patterns with operator-selected refs are allowed in
+production when they fit the article, but record the choice in `visual.md` and
+inspect results carefully.
+
+Typography / deterministic HTML note:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/docs/typography-contract-handoff.md
+```
+
+This handoff is a real next architecture topic from MyPromptist. It should not
+be treated as dirty worktree noise. The issue is that font is part of visual
+identity and deterministic delivery, especially for HTML / Typst / PDF outputs.
+Do not solve this inside GanFan media ops. The next OVG architecture task should
+decide how to extract generic typography roles and font-packaging runtime rules
+without overdesigning the image-generation pattern workflow.
 
 Small regression pass:
 

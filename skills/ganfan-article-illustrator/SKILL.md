@@ -134,19 +134,45 @@ an image is needed:
 /Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/README.md
 ```
 
-Then load exactly one stable pattern when the job matches it:
+Then choose exactly one pattern. The pattern is the visual method source of
+truth; the runtime prompt is only the compiled artifact for this article.
 
-- `patterns/big-character-poster/PATTERN.md` for X hooks where one dominant title and one sharp conflict should carry the first read.
+Selection flow:
 
-If the operator asks for an older GanFan image-generation flavor, load the
-matching recovered pattern seed from:
+1. Read `patterns/README.md` to see available patterns and status.
+2. Pick the pattern whose invariants fit the asset job.
+3. Read only that pattern's `PATTERN.md`.
+4. Read its `refs/README.md` and inspect reference images when visual calibration
+   matters.
+5. Read `anti-patterns.md`, adapters, or examples only if that pattern already
+   has them and the current job needs them.
 
-```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/
-```
+Do not load every pattern by default. Do not copy old runtime prompts into a new
+job. A new article needs a new score compiled from the current source material.
 
-Historical seeds still need references and evals before becoming canonical.
-Use one pattern at a time.
+Current production-ready default:
+
+- `patterns/big-character-poster/PATTERN.md` for X hooks where one dominant
+  title and one sharp conflict should carry the first read.
+
+Useful seed patterns with operator-selected refs:
+
+- `patterns/narrative-journal-infographic/PATTERN.md` for handdrawn timelines,
+  comparisons, workflows, and system maps.
+- `patterns/flowing-gaze-minimal-cover/PATTERN.md` for quiet covers with one
+  subject, negative space, and reflective tension.
+- `patterns/pixel-retro/PATTERN.md` for playful technical topics where tool
+  paths, costs, or choices can become game-system logic.
+- `patterns/eastern-texture-handdrawn/PATTERN.md` for restrained editorial
+  illustration with paper texture, loose line, metaphor, and whitespace.
+- `patterns/whimsical-journal-sketch/PATTERN.md` for warm journal-collage
+  pieces with a lighter, more approachable tone.
+- `patterns/minimal-handdrawn-linework/PATTERN.md` for quiet concept
+  illustrations where clean linework and one clear relation can carry the idea.
+
+Seed patterns are allowed in production when they fit the article, but record
+the choice in `visual.md` and inspect the result more carefully. Real production
+use is how Open Visual Grammar should keep improving.
 
 Use local incubation notes for candidate patterns that are not yet public stable:
 
@@ -158,6 +184,12 @@ Docs heroes, proof screenshots, editorial illustrations, and other visual jobs
 are not public stable Open Visual Grammar patterns yet. Use local incubation
 notes for those jobs and do not promote them to `open-visual-grammar` until the
 operator has approved real production examples.
+
+For deterministic HTML, PDF, Typst, or other fixed-format deliverables, font is
+part of the visual identity and runtime contract. Do not treat typography as a
+renderer afterthought. Until Open Visual Grammar extracts the shared typography
+contract from the MyPromptist handoff, record font assumptions in `visual.md`
+and follow the consuming project's explicit font-packaging rules.
 
 If real UI proof matters, use a real screenshot and follow the screenshot notes
 there. Do not ask an image model to fabricate UI screenshots.

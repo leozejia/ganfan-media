@@ -214,14 +214,26 @@ articles/2026-05-11-claude-code-gpt-cost/_work/visual-runs/2026-05-16-pattern-se
 Operator judgment:
 
 ```text
-Temporarily keep the pattern, but do not promote any image from this run.
+Passed as a seed pattern.
+```
+
+Selected reference:
+
+```text
+candidate-01
+```
+
+Promoted to:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/minimal-handdrawn-linework/refs/agent-runtime-cost-minimal-linework-01.png
 ```
 
 Reason:
 
 ```text
-No candidate in the current run is strong enough to serve as a reference.
-The pattern remains a seed pending a better production example.
+candidate-01 is good enough to act as the first reference. The style should
+remain tentative in production, but it now has a visual anchor.
 ```
 
 ## Rejected
@@ -245,5 +257,5 @@ flowing-gaze-minimal-cover: candidate-02
 pixel-retro: candidate-01, candidate-03
 eastern-texture-handdrawn: candidate-01 from main, candidate-03 from random
 whimsical-journal-sketch: passed, candidate-03
-minimal-handdrawn-linework: kept as seed, no reference promoted
+minimal-handdrawn-linework: passed as seed, candidate-01
 ```

@@ -142,16 +142,21 @@ articles/2026-05-11-claude-code-gpt-cost/_work/visual-runs/2026-05-16-pattern-se
 Operator judgment:
 
 ```text
-Temporarily keep the pattern. No candidate from this run is strong enough to
-become a public reference.
+Passed as a seed pattern.
+```
+
+Selected reference:
+
+```text
+candidate-01
 ```
 
 Reason:
 
 ```text
-The style is not rejected, but this run did not produce a reference image with
-enough design strength and content expression. Keep it as a seed and retest
-when a better source fit appears.
+candidate-01 has enough design strength and content expression to become the
+first public reference. Keep the pattern tentative in production until more
+real article usage proves its range.
 ```
 
 ## Current Status
@@ -163,11 +168,6 @@ Passed:
 ```text
 eastern-texture-handdrawn
 whimsical-journal-sketch
-```
-
-Seed retained without promoted reference:
-
-```text
 minimal-handdrawn-linework
 ```
 
