@@ -499,6 +499,23 @@ sharp conflict. Seed patterns with operator-selected refs are allowed in
 production when they fit the article, but record the choice in `visual.md` and
 inspect results carefully.
 
+Open Visual Grammar now uses an agent-first harness:
+
+```text
+CATALOG.md -> registry/<artifact-kind>.md -> patterns/<pattern>/PATTERN.md -> adapter/runtime/grammar as needed
+```
+
+For GanFan article covers, route through:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/CATALOG.md
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/registry/image-cover.md
+```
+
+Do not ask agents to browse all of `patterns/`, `grammar/`, or `runtimes/`.
+The registry owns routing; the pattern owns visual method; runtimes own
+execution contracts; grammar owns shared vocabulary.
+
 Typography / deterministic HTML note:
 
 ```text
@@ -508,9 +525,18 @@ Typography / deterministic HTML note:
 This handoff is a real next architecture topic from MyPromptist. It should not
 be treated as dirty worktree noise. The issue is that font is part of visual
 identity and deterministic delivery, especially for HTML / Typst / PDF outputs.
-Do not solve this inside GanFan media ops. The next OVG architecture task should
-decide how to extract generic typography roles and font-packaging runtime rules
-without overdesigning the image-generation pattern workflow.
+Do not solve this inside GanFan media ops. OVG now has:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/grammar/typography.md
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/runtimes/font-packaging.md
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/registry/deterministic-layout.md
+```
+
+MP should consume OVG through the deterministic-layout registry, then load the
+selected pattern and runtime contract. OVG should not vendor font files;
+consuming projects own actual font packages, license files, hashes, and runtime
+paths.
 
 Small regression pass:
 

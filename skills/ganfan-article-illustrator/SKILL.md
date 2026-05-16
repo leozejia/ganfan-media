@@ -131,7 +131,13 @@ Use progressive disclosure. Read the Open Visual Grammar entry point only when
 an image is needed:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/README.md
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/CATALOG.md
+```
+
+For normal article visuals, route through:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/registry/image-cover.md
 ```
 
 Then choose exactly one pattern. The pattern is the visual method source of
@@ -139,12 +145,13 @@ truth; the runtime prompt is only the compiled artifact for this article.
 
 Selection flow:
 
-1. Read `patterns/README.md` to see available patterns and status.
-2. Pick the pattern whose invariants fit the asset job.
-3. Read only that pattern's `PATTERN.md`.
-4. Read its `refs/README.md` and inspect reference images when visual calibration
+1. Read `CATALOG.md` to confirm the artifact kind.
+2. Read `registry/image-cover.md`.
+3. Pick the pattern whose invariants fit the asset job.
+4. Read only that pattern's `PATTERN.md`.
+5. Read its `refs/README.md` and inspect reference images when visual calibration
    matters.
-5. Read `anti-patterns.md`, adapters, or examples only if that pattern already
+6. Read `anti-patterns.md`, adapters, grammar, runtime contracts, or examples only if that pattern already
    has them and the current job needs them.
 
 Do not load every pattern by default. Do not copy old runtime prompts into a new
@@ -187,9 +194,9 @@ operator has approved real production examples.
 
 For deterministic HTML, PDF, Typst, or other fixed-format deliverables, font is
 part of the visual identity and runtime contract. Do not treat typography as a
-renderer afterthought. Until Open Visual Grammar extracts the shared typography
-contract from the MyPromptist handoff, record font assumptions in `visual.md`
-and follow the consuming project's explicit font-packaging rules.
+renderer afterthought. These jobs should route through
+`registry/deterministic-layout.md`, then load `grammar/typography.md` and
+`runtimes/font-packaging.md` only when the selected route requires them.
 
 If real UI proof matters, use a real screenshot and follow the screenshot notes
 there. Do not ask an image model to fabricate UI screenshots.
