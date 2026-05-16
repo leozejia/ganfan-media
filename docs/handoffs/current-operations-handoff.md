@@ -525,7 +525,7 @@ Typography / deterministic HTML note:
 This handoff is a real next architecture topic from MyPromptist. It should not
 be treated as dirty worktree noise. The issue is that font is part of visual
 identity and deterministic delivery, especially for HTML / Typst / PDF outputs.
-Do not solve this inside GanFan media ops. OVG now has:
+Do not solve this inside GanFan media ops. OVG now has the architecture pieces:
 
 ```text
 /Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/grammar/typography.md
@@ -533,10 +533,14 @@ Do not solve this inside GanFan media ops. OVG now has:
 /Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/registry/deterministic-layout.md
 ```
 
-MP should consume OVG through the deterministic-layout registry, then load the
-selected pattern and runtime contract. OVG should not vendor font files;
-consuming projects own actual font packages, license files, hashes, and runtime
-paths.
+MP should not treat the current `print-menu-layout` font-family candidates as
+approved production assets. The operator has not reviewed typography samples
+yet. MP may use the deterministic-layout registry to understand the route, but
+real consumption needs a font review pass first: render PNG/PDF samples for
+each style direction, review visual taste and readability, then approve or
+replace the font families. OVG should not vendor font files; consuming projects
+own actual font packages, license files, hashes, and runtime paths after
+approval.
 
 Small regression pass:
 
