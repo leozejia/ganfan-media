@@ -1,7 +1,167 @@
-# 看懂 AI 账单的 5 个字段：别再只盯 output tokens
+# AI 明明没写几个字，为什么账单这么贵？
 
-Status: source research needed before drafting.
+我以前有个很朴素的判断：
 
-This file exists to reserve the article package and title. Do not draft the
-public article until `sources.md` has official OpenAI and Anthropic billing /
-usage references.
+AI 写得多，就贵。
+
+AI 没写几个字，应该就不贵。
+
+后来认真看 usage breakdown，发现这个判断太粗了。
+
+AI 账单不是按“回复有多少字”算的。
+
+你看到的那段回复，只是最显眼的 output。
+
+模型真正消耗的东西，通常要落回三类：
+
+input、output、cache。
+
+---
+
+先说 token。
+
+token 不是字数，也不是词数。
+
+它是模型内部处理文字的小碎片。
+
+英文里，一个 token 大概可以粗略理解成 4 个字符，或者 0.75 个单词。但这只是经验值。
+
+中文、代码、标点、空格、路径、JSON、Markdown 表格，都会让 token 变得不直观。
+
+所以你不能用肉眼判断：
+
+“它才回了 200 个字，怎么会贵？”
+
+因为你看到的是输出。
+
+模型还可能读了很多你没盯着看的东西。
+
+---
+
+先把底层说清楚。
+
+模型消耗大致看三类。
+
+## 1. input：它读了多少
+
+input 是模型读进去的东西。
+
+不只是你刚发的那句话。
+
+还可能包括系统提示词、历史对话、文件内容、工具返回、报错日志、项目规则。
+
+你看到 AI 只回了两句话，不代表它只处理了两句话。
+
+它可能为了回这两句话，先读了一大堆。
+
+## 2. output：它生成了多少
+
+output 是模型生成出来的东西。
+
+回复一段话、生成一段代码、写一份总结，都是 output。
+
+很多模型的 output 单价确实比 input 贵。
+
+但 output 也不完全等于你肉眼看到的文字。
+
+推理模型可能会有 reasoning / thinking tokens。
+
+这些内部推理不一定完整显示在最终回复里，但通常会落在 output 侧计费。
+
+所以“它没写几个字”这件事，本身就可能是错觉。
+
+它可能没有写很多给你看，但在内部想了很久。
+
+## 3. cache：它复用了什么
+
+cache 是为了处理重复上下文。
+
+如果一段稳定内容后面会反复用，系统可能把它缓存起来。
+
+命中缓存时，cached input / cache read 通常比普通 input 便宜。
+
+但便宜不是免费。
+
+而且有些 provider 会区分 cache write 和 cache read。
+
+第一次写入缓存，也可能要花钱。
+
+所以不要听到“缓存命中”就自动理解成省钱。
+
+缓存解决的是重复输入的成本，不是让模型免费干活。
+
+---
+
+然后再看不同使用场景。
+
+## 网页聊天
+
+你以为自己只发了一句话。
+
+但网页产品可能还带着历史对话、系统规则、文件、图片、搜索结果、工具结果。
+
+这些主要变成 input。
+
+模型回你的内容，变成 output。
+
+稳定上下文如果被产品缓存，可能走 cache。
+
+## API 调用
+
+这个最清楚。
+
+你传进去的 prompt / messages / tools / files，是 input。
+
+模型返回的 response，是 output。
+
+重复前缀、系统提示词、长上下文，可能命中 cache。
+
+## Agent runtime
+
+这类最容易让人误判成本。
+
+agent 不是一问一答。
+
+它会读文件、跑命令、看报错、调用工具、多轮规划、再把结果塞回上下文。
+
+这些会不断触发 input。
+
+每次让模型分析、决策、总结、改写，都会触发 output。
+
+如果 runtime 把稳定上下文组织得好，可能命中 cache。
+
+如果组织得不好，就会反复读、反复写、反复烧。
+
+---
+
+所以我现在看 AI 成本，不再先问：
+
+“它写了多少字？”
+
+我会先问：
+
+1. 它读了多少 input？
+2. 它生成了多少 output？
+3. 它有没有命中 cache？
+
+这三件事看完，再判断贵不贵。
+
+---
+
+一句话总结：
+
+AI 账单不是按你看到的字数算的。
+
+它按模型实际读了多少、写了多少、复用了多少来算。
+
+回复短，只说明 output 短。
+
+不代表 input 小，也不代表 cache 命中好。
+
+如果你开始用 Codex、Claude Code 或各种 agent runtime，这件事越早搞懂越好。
+
+不然你会一直在“它明明没写几个字”的错觉里烧钱。
+
+我把 tools / models / runtime / billing 这些层的区别，也整理到 SorryCode 文档里了：
+
+https://sorrycode.com/docs/platform/tools-and-models

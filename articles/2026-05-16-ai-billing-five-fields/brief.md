@@ -1,11 +1,11 @@
-# Brief: 看懂 AI 账单的 5 个字段
+# Brief: AI 明明没写几个字，为什么账单这么贵？
 
 Date: 2026-05-16
 
 ## Working Title
 
 ```text
-看懂 AI 账单的 5 个字段：别再只盯 output tokens
+AI 明明没写几个字，为什么账单这么贵？
 ```
 
 ## Audience
@@ -17,31 +17,31 @@ cost as "the model wrote a lot" or "the model is expensive."
 ## Reader Problem
 
 The reader sees a bill or usage dashboard and does not know which part actually
-made the request expensive. They may blame output tokens, while the cost can be
-spread across input, cache creation, cache read, provider multiplier, or
-fallback behavior.
+made the request expensive. They may judge cost by visible reply length, while
+model consumption is usually better understood as input, output, and cache.
 
 ## X Promise
 
-Give the reader a five-field checklist for reading an AI agent bill:
+Give the reader a simple, objective model for AI usage cost:
 
 ```text
-output
-input
-cache creation
-cache read / cached tokens
-provider multiplier / fallback
+input: what the model read
+output: what the model generated
+cache: what was reused or written for reuse
 ```
+
+Then show how web chat, API calls, and agent runtimes trigger those three
+categories differently.
 
 The article should be useful even if the reader never clicks SorryCode.
 
 ## Conflict
 
-Most people stare at output tokens because output is visible.
+Most people stare at the visible reply because output is visible.
 
-Agent bills are often shaped by the invisible part: the context that gets read,
-whether stable context hits cache, whether new cache has to be created, and
-whether the gateway adds pricing or model-routing rules the user cannot see.
+Agent bills are often shaped by the invisible part: what the runtime reads for
+the model, what it asks the model to generate, and whether stable context can be
+reused through cache.
 
 ## SorryCode Action
 
@@ -69,10 +69,11 @@ private dashboards, or unverified claims about any named provider.
 
 Allowed:
 
-- structural explanation of billing fields;
+- structural explanation of input / output / cache;
 - anonymized operator observation that usage dashboards can expose surprising
   cost distribution;
-- general due-diligence questions for gateways.
+- short explanation that product billing may be subscription, credit, or API,
+  while the underlying model resource still maps back to input / output / cache.
 
 Avoid:
 

@@ -53,13 +53,14 @@ LLM 账单不是只有输入和输出
 Better traffic direction:
 
 ```text
-看懂 AI 账单的 5 个字段：别再只盯 output tokens
+AI 明明没写几个字，为什么账单这么贵？
 ```
 
-The second version gives the reader a thing to take away: a five-field usage
-breakdown checklist. It also creates a clearer conflict: many users stare at
-output tokens, while the bill may be shaped by input, cache creation, cache read,
-provider multiplier, or fallback behavior.
+The second version starts from a visible contradiction: users judge cost by the
+reply length, while model consumption is better understood through three
+objective categories: input, output, and cache. It also leaves gateway
+transparency for the next piece instead of mixing product billing with model
+pricing.
 
 ## Editorial Standard
 
@@ -232,10 +233,10 @@ Status updated: 2026-05-16
    - Public lesson: stable context goes into files; temporary context gets distilled or discarded.
    - Needs sources: OpenAI / Anthropic context, caching, compaction, and AGENTS.md docs.
 
-3. `看懂 AI 账单的 5 个字段：别再只盯 output tokens` (next)
-   - Conflict: users look at output length, but cost may come from repeated input, cache creation, cache read, provider multiplier, or fallback behavior.
-   - Public lesson: read usage breakdown before blaming the model.
-   - Reader takeaway: a five-field checklist for reading AI agent bills.
+3. `AI 明明没写几个字，为什么账单这么贵？` (next)
+   - Conflict: users look at visible reply length, but model consumption comes from what the model reads, generates, and reuses.
+   - Public lesson: model consumption maps back to input, output, and cache across web chat, API calls, and agent runtimes.
+   - Reader takeaway: a three-part mental model for reading AI usage without confusing product billing, subscriptions, or gateways with model pricing.
    - Needs sources: official billing / usage docs.
 
 4. `中转站最容易暗箱操作的 4 个地方`

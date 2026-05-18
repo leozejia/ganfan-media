@@ -1,190 +1,117 @@
 # Current Operations Handoff
 
-Updated: 2026-05-16
+Updated: 2026-05-18
 
-This handoff is for the next COO / media-ops agent session. Start future operations work from `ganfan-media`, not `ganfan-nexus`.
-
-## Role
-
-The agent acts as chief operating officer for GanFan / SorryCode content operations.
-
-Default responsibilities:
-
-- plan and produce public-facing SorryCode tutorials;
-- prepare X / WeChat / SorryCode article packages;
-- maintain article assets, covers, source notes, and publish records;
-- keep beginner-first public docs aligned with SorryCode architecture;
-- avoid leaking internal account, provider, routing, key, cookie, or token details.
-
-Current media strategy source:
+One-line alignment for the next agent:
 
 ```text
-docs/strategy/ai-literacy-ambassador-plan-v1.md
+Start from ganfan-media, preserve the user's current edits, keep every public piece beginner-first and independently useful, and never let temporary visual experiments become the workflow source of truth.
 ```
 
-Use this as the operating plan for the AI literacy ambassador series: independent X tutorials first, light SorryCode CTA second.
+## Start Here
 
-Latest working article package:
-
-```text
-articles/2026-05-12-agent-context-token-economics/
-```
-
-Purpose: teach context economics for agent users beyond coding. Core thesis: context is both asset and liability; stable context belongs in files, temporary context should be distilled or discarded, and cache hit rate is not a session-health signal.
-
-Next AI literacy article in the current P0 queue:
-
-```text
-看懂 AI 账单的 5 个字段：别再只盯 output tokens
-```
-
-This should come before:
-
-```text
-中转站最容易暗箱操作的 4 个地方
-```
-
-Reason: the first two published pieces already covered runtime/protocol/model
-cost and agent context economics. The next clean educational step is a broader
-billing-literacy article that explains usage breakdowns without making the
-piece about any specific gateway. The gateway-transparency article should
-follow after readers understand billing fields.
-
-Current traffic lesson:
-
-```text
-Visible tool problem + direct result > pure mechanism explanation.
-```
-
-The strongest previous post was `Codex API mode plugins` because it gave users a
-clear outcome: fix a grey / missing plugin entry. Future AI-literacy pieces
-should still teach real mechanisms, but the package must give the reader a
-takeaway artifact first: checklist, command, diagnostic flow, template, decision
-tree, or before/after fix.
-
-New article package:
-
-```text
-articles/2026-05-16-ai-billing-five-fields/
-```
-
-This package is prepared only to the brief/source-boundary stage. Do not draft
-or publish until official OpenAI and Anthropic billing / usage docs are checked.
-
-## Repositories
-
-### `ganfan-media`
-
-Path:
+Primary workspace:
 
 ```text
 /Users/zejiawu/Projects/Project-Atlas/ganfan-media
 ```
 
-This is the primary operations workspace.
-
-Use it for:
-
-- article packages under `articles/`;
-- covers and article assets;
-- X / WeChat publishing workflow;
-- source notes and public/private boundaries;
-- media workflow skills.
-
-Entry files:
+Read first:
 
 ```text
 AGENTS.md
 docs/workflows/media-operations-workflow.md
+docs/strategy/ai-literacy-ambassador-plan-v1.md
 ```
 
-Current simplified structure:
+This repo is the operating workspace for GanFan / SorryCode media operations.
+Do not start new media workflows from `ganfan-nexus`.
+
+## Current Repo State
+
+At handoff time, temporary local noise was removed from `ganfan-media`:
+
+- `.DS_Store`
+- Chrome headless profile cache under visual runs
+- a wrong-path HTML composite experiment for the context-management cover
+- a failed direct image retry directory that only contained 524 diagnostics
+
+Remaining `ganfan-media` changes are real operating work and should not be
+reverted casually:
 
 ```text
-articles/      article packages
-channels/      X / WeChat publishing profiles
-skills/        active media workflow skills
-docs/          workflows, strategy, handoffs
-assets/        reusable media assets
+articles/2026-05-16-ai-billing-five-fields/
+docs/strategy/ai-literacy-ambassador-plan-v1.md
+docs/handoffs/current-operations-handoff.md
 ```
 
-### `sorrycode`
+`articles/2026-05-16-ai-billing-five-fields/assets/cover.png` is an intended
+selected cover asset.
 
-Path:
+Before committing or publishing, run:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode
+git status --short
+scripts/validate-visual-structure.sh
 ```
 
-Use as product-site and historical public-docs source until content migration completes.
+## Operating Rules
 
-Important architecture reference:
+- One article teaches one problem. Do not combine model billing, gateway trust,
+  runtime behavior, and product sales into one post.
+- X posts must be independently useful before the SorryCode CTA.
+- SorryCode docs must be beginner-first, agent-first, concrete, and operational.
+- Keep source notes, drafts, assets, outputs, and publish logs separated.
+- Do not publish to X with `--submit` unless the user explicitly asks for direct
+  publishing. Default is preview / draft.
+- For visuals, generate three candidates when the user is choosing a direction.
+- Runtime prompts and failed generations belong under `_work/visual-runs/`.
+  Selected delivery files belong under `assets/`.
+- Do not turn a one-off prompt into a public workflow rule. The user dislikes
+  patchy anti-rules and over-designed guardrail files.
+
+## Current Media Strategy
+
+The current strategy is `AI literacy ambassador`.
+
+Traffic lesson:
 
 ```text
-docs/architecture/public-docs-architecture.md
+Visible tool problem + direct result > pure mechanism explanation.
 ```
 
-Core public-docs model from that file:
+The best-performing piece was `Codex API mode plugins` because it solved a
+visible problem: grey / missing plugin entries. Future pieces can still explain
+mechanisms, but they need a concrete result: checklist, diagnostic path,
+command, template, decision tree, or before/after fix.
+
+Current priority article title:
 
 ```text
-ganfan-media        选题、草稿、素材生产、渠道分发
-sorrycode-content   已审核、可公开、可热更新的内容源
-sorrycode           产品站、渲染器、导航、缓存和权限边界
+AI 明明没写几个字，为什么账单这么贵？
 ```
 
-Long-term public docs IA:
+Core teaching model:
 
 ```text
-开始使用
-Platform
-Runtime
-Skills
-新手村
-工具
-Agent 基建
-环境准备
-排障
+input  = what the model read
+output = what the model generated
+cache  = what was reused or written for reuse
 ```
 
-### `sorrycode-content`
+Keep the article objective. Do not invent a five-field pricing model. For public
+teaching, treat input / output / cache as the stable billing-language layer, then
+explain how web chat, API usage, and agent runtimes can trigger those categories.
 
-Expected future path:
+Gateway dark-pattern content is a separate later article:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content
+中转站最容易暗箱操作的 4 个地方
 ```
 
-This will gradually receive public, reviewed, hot-updatable SorryCode content. Treat `sorrycode` docs as history/reference when rewriting or migrating into `sorrycode-content`.
+## Article Packages
 
-If the repo does not exist or lacks instructions in a future session, inspect it first and follow its own `AGENTS.md` if present.
-
-### `codex-history`
-
-Path:
-
-```text
-/Users/zejiawu/Projects/Project-Atlas/labs/codex-history
-```
-
-Our own open-source tool used in the latest article.
-
-Public repo:
-
-```text
-https://github.com/leozejia/codex-history
-```
-
-README was rewritten and pushed:
-
-```text
-1ca0c6d docs: clarify session recovery workflow
-```
-
-Do not commit existing unrelated untracked JS files unless the user explicitly asks.
-
-## Current article package
-
-### Codex API mode plugins
+### Codex API Mode Plugins
 
 Path:
 
@@ -192,17 +119,14 @@ Path:
 articles/2026-05-09-codex-api-mode-plugins/
 ```
 
-Purpose: teach Codex App users why plugin entries can appear grey / missing when API mode and plugin configuration are not aligned.
-
-Public SorryCode URL is live:
+Public SorryCode URL:
 
 ```text
 https://sorrycode.com/docs/runtime/codex-plugins
 ```
 
-This URL was confirmed correct by the operator on 2026-05-11.
-
-X Article was manually published by the operator on 2026-05-11. The X URL is still missing from `publish.md`; ask the user for the X URL and update it when available.
+The user confirmed this URL is correct. X was already sent by the operator, but
+the X URL may still be missing from `publish.md`.
 
 ### Codex History Sessions
 
@@ -212,42 +136,40 @@ Path:
 articles/2026-05-10-codex-history-sessions/
 ```
 
-Purpose: teach users how to recover local Codex sessions after switching provider / base URL / config.
-
-Files:
-
-```text
-brief.md
-sources.md
-x.md
-sorrycode.md
-visual.md
-assets/cover.png
-outputs/wechat/article.html
-publish.md
-```
-
-Public SorryCode URL is live:
+Public SorryCode URL:
 
 ```text
 https://sorrycode.com/docs/tools/codex-history
 ```
 
-This URL was confirmed correct by the operator on 2026-05-11.
+The user confirmed this URL is correct. X was already sent by the operator, but
+the X URL may still be missing from `publish.md`.
 
-X Article was manually published by the operator on 2026-05-11 after automation filled the editor but readiness detection lagged. The X URL is still missing from `publish.md`; ask the user for the X URL and update it when available.
+### Claude Code GPT Cost
 
-Current formal cover:
-
-```text
-articles/2026-05-10-codex-history-sessions/assets/cover.png
-```
-
-It is exact X Article size:
+Path:
 
 ```text
-1500x600, 5:2
+articles/2026-05-11-claude-code-gpt-cost/
 ```
+
+Core thesis:
+
+```text
+Claude Code can call GPT through compatible routing, but cost and quality depend
+on the runtime/model/cache fit, not only on the model name.
+```
+
+Important nuance:
+
+- Do not frame this as "can Claude Code run GPT?" The issue is not whether it
+  can run.
+- The observed problem was low cache efficiency / poor runtime fit in that path.
+- GPT models currently fit Codex better as the mainstream path; Codex has become
+  the stronger default GPT agent runtime in our narrative.
+
+The user indicated this piece was pushed out. Verify and update `publish.md`
+only when the actual URL is available.
 
 ### Agent Context Token Economics
 
@@ -257,492 +179,338 @@ Path:
 articles/2026-05-12-agent-context-token-economics/
 ```
 
-Files:
+Core thesis:
 
 ```text
-brief.md
-sources.md
-x.md
-sorrycode.md
-visual.md
-publish.md
-assets/cover.png
-outputs/.gitkeep
+Context is both asset and liability. A long session with high cache hit can still
+cost money and can also create stale state. Stable truth belongs in durable files;
+temporary conversation should be distilled, handed off, or discarded.
 ```
 
-Current X title:
+Current SorryCode anchor:
 
 ```text
-上下文不是越多越好：Agent 时代的 Token 经济学
+https://sorrycode.com/docs/agent-infra/context-management
 ```
 
-Important boundaries:
-
-- This is not a proxy / middleman transparency article.
-- Do not make it only about AI programming.
-- Do not say cache causes dirty state.
-- Do not say high cache hit rate means a session is healthy.
-- Keep the CTA light. The current draft links to `https://sorrycode.com/docs/agent-infra/agents-md`.
-
-Primary sources:
-
-- OpenAI prompt caching, conversation state, compaction, and Codex AGENTS.md docs.
-- Anthropic prompt caching, Claude Code memory, and effective context engineering article.
-- Chroma context-rot technical report.
-- X discussion was used only as field signal, not as factual authority.
-
-## Important lessons from latest work
-
-### Open Visual Grammar correction
-
-The first visual-grammar benchmark drifted in the wrong direction: it tested
-whether image models could handle many visual jobs, not whether a reusable
-visual design method could be reproduced.
-
-That benchmark package was removed from `ganfan-media`.
-
-Current direction:
-
-- Open Visual Grammar should first stabilize the proven big-character poster
-  method used by recent GanFan / SorryCode X covers.
-- The public stable pattern is now:
+Related docs in `sorrycode-content`:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/big-character-poster/PATTERN.md
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/context-management/
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/agents-md/
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/claude-md/
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/design-md/
 ```
 
-- Broader jobs such as docs hero, proof screenshot, and non-coding agent visuals
-  should stay in GanFan incubation until they have operator-approved production
-  references.
-- Benchmarking should test method reproduction across topics, not general image
-  model capability.
-
-When testing visuals, use:
+Do not say "sessions should be kept forever." The correct management pattern is:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/evals/cases/big-character-poster-reproduction.md
+work in a session -> distill stable truth -> write handoff/context files -> release old session
 ```
 
-Each topic still needs three cards, but the three cards should be different
-visual-language solutions for the same article argument. They can vary evidence
-object, title relationship, poster temperament, metaphor distance, and material
-language. Do not force fixed composition labels when they weaken the idea.
-
-The first clean reproduction run completed 12 cards across four historical
-articles. Operator judgment: the style direction was close, but the content
-expression did not reach the best historical covers. The strongest group was
-`Claude Code GPT Cost` because its argument was naturally sharp: "can run" vs
-"cost-efficient".
-
-The durable lesson is that `big-character-poster` needs visual judgment before
-prompting:
+User's preferred handoff prompt:
 
 ```text
-reader pain -> false belief -> correction -> concrete evidence -> visual action
+我准备释放这个会话了，请你复核一下当前文档的健康程度，准备一份 handoff 给你的继任者，并给他一句话，让他能够拉齐项目情况。
 ```
 
-Do not generate from topic + style alone. The poster needs article-specific
-evidence and a visual action that makes the correction visible.
+### AI Billing Five Fields / Cost Basics
 
-Important correction from the operator: source selection should be a positive
-inclusion protocol. One package can produce X, SorryCode, WeChat, XHS, and other
-publication assets. The current asset job defines the image context unit. For
-an X-cover test, start from the X draft as the primary source. Add supporting
-sources only when they change the audience, factual boundary, visual claim,
-delivery constraint, or reuse target.
-
-Public-safe eval record:
+Path:
 
 ```text
-docs/visual-incubation/evals/2026-05-15-big-character-reproduction.md
+articles/2026-05-16-ai-billing-five-fields/
 ```
 
-Important correction after the v1 stability pass: older GanFan image-generation
-flavors from `ganfan-article-illustrator/styles/archive/*.yaml` are reusable
-visual pattern seeds. Treating them as legacy prompt noise was wrong.
-
-They have been recovered into:
+Current public title:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/
+AI 明明没写几个字，为什么账单这么贵？
 ```
 
-Extract them one at a time into proper patterns through references, boundaries,
-three-card tests, and operator judgment.
-
-Current recovered seed patterns:
+Current status in `publish.md`:
 
 ```text
-eastern-texture-handdrawn
-pixel-retro
-narrative-journal-infographic
-whimsical-journal-sketch
-flowing-gaze-minimal-cover
-minimal-handdrawn-linework
+preview ready; source review passed on 2026-05-18
 ```
 
-Do not recreate a separate `styles/` layer. In this project, `patterns` are
-reusable visual abstractions. A pattern is defined by stable visual invariants
-and transfer boundaries. Recommended scenes help selection but do not lock the
-pattern to one channel.
-
-Next test plan:
-
-1. Static check:
-   - no `styles/` entry point;
-   - each seed has invariants, recommended cases, weak-fit cases, and avoid
-     rules;
-   - `ganfan-article-illustrator` points agents to `patterns/`.
-2. Single-pattern three-card test:
-   - start with `narrative-journal-infographic`,
-     `flowing-gaze-minimal-cover`, and `pixel-retro`;
-   - one real article/source per pattern;
-   - generate exactly three candidates;
-   - operator judges final images only.
-3. Cross-topic stability test:
-   - only after the single-pattern test works;
-   - one pattern, three topics, three cards each;
-   - pass only if the visual invariants survive topic changes and at least one
-     candidate per topic is close to usable.
-
-Record failed runs as pattern boundaries or anti-patterns. Do not turn runtime
-prompts into the source of truth.
-
-2026-05-16 recovered pattern seed stability result:
+Preview URL recorded:
 
 ```text
-docs/visual-incubation/evals/2026-05-16-recovered-pattern-seed-stability.md
+https://x.com/compose/articles/edit/2055991046774169600/preview
 ```
 
-Patterns tested:
+Selected cover:
 
 ```text
-narrative-journal-infographic
-flowing-gaze-minimal-cover
-pixel-retro
+articles/2026-05-16-ai-billing-five-fields/assets/cover.png
 ```
 
-Operator judgment: all three groups passed. The groups are visually distinct,
-and each group stayed stable across three generated candidates. Preserve these
-three pattern seeds as current stable baselines. Do not keep editing their core
-descriptions unless repeated production failures show the same root cause.
+Important:
 
-Remaining pattern seed review generated on 2026-05-16:
+- Do not publish without user confirmation.
+- The X draft has been reviewed against official OpenAI / Anthropic usage and
+  billing notes; no factual blocker found for manual preview publishing.
+- This piece should stay short, sharp, and practical for X.
+- The long-lived SorryCode version can be broader and more beginner-friendly.
+- The corresponding SorryCode docs have been restructured around platform cost
+  literacy; check `sorrycode-content` before editing.
+
+## Visual Workflow State
+
+Use `ganfan-article-illustrator` through the media workflow. The visual method
+lives in Open Visual Grammar:
 
 ```text
-docs/visual-incubation/evals/2026-05-16-remaining-pattern-seed-review.md
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar
 ```
 
-Pattern seed status after operator review:
+Stable / useful patterns:
 
 ```text
-passed: eastern-texture-handdrawn
-passed: whimsical-journal-sketch
-passed as seed: minimal-handdrawn-linework
-rejected: elegant-minimal-art
+patterns/big-character-poster/
+patterns/narrative-journal-infographic/
+patterns/flowing-gaze-minimal-cover/
+patterns/pixel-retro/
+patterns/eastern-texture-handdrawn/
+patterns/whimsical-journal-sketch/
+patterns/minimal-handdrawn-linework/
 ```
 
-Random mechanism test:
+`elegant-minimal-art` was judged too generic and should not be revived as a
+default direction.
+
+Key OVG design decision:
 
 ```text
-articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-16-random-mechanism-test-eastern-texture-handdrawn/review.html
+patterns are reusable visual abstraction styles, not fixed scenes.
 ```
 
-Operator judgment: passed. The mechanism used the bilingual
-`eastern-texture-handdrawn` pattern with a randomly selected `codex-history`
-tool tutorial source. The result satisfied the baseline requirement. Keep the
-pattern in its current state; future work can polish references/examples without
-editing the core pattern text.
+They can recommend scenarios, but should not lock the agent into one use case.
+Agents should route through the registry first, then load only the relevant
+pattern and runtime docs.
 
-Rejected on 2026-05-16: `elegant-minimal-art`. Reason: it was visually
-acceptable but too generic to stand as an independent pattern. It overlaps with
-other calm handdrawn illustration seeds and risks becoming a safe default
-instead of a reusable visual abstraction.
+## Context-Management Docs Cover
 
-Operator-selected Open Visual Grammar refs promoted on 2026-05-16:
+Current visual task:
 
 ```text
-narrative-journal-infographic: candidate-03
-flowing-gaze-minimal-cover: candidate-02
-pixel-retro: candidate-01, candidate-03
-eastern-texture-handdrawn: candidate-01 from main, candidate-03 from random
-whimsical-journal-sketch: candidate-03
-minimal-handdrawn-linework: candidate-01
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/context-management/
 ```
 
-The generated PNGs were copied into:
+The user reviewed the direct image redraw candidates from:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/*/refs/
+articles/2026-05-12-agent-context-token-economics/_work/visual-runs/2026-05-18-context-management-docs-redraw/
 ```
 
-The corresponding runtime prompts remain only in:
+User selected `candidate-01`.
+
+Selected delivery file:
 
 ```text
-articles/*/_work/visual-runs/*/candidate-*/runtime-prompt.md
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content/articles/agent-infra/context-management/cover.png
 ```
 
-Do not copy these one-off prompts into Open Visual Grammar. They are provenance
-for the selected images, not the stable visual method.
-
-`ganfan-article-illustrator` now consumes Open Visual Grammar directly:
+It was resized to the SorryCode docs hero preset:
 
 ```text
-skills/ganfan-article-illustrator/SKILL.md
+1200x675
 ```
 
-For future article visuals, choose exactly one OVG pattern, read that pattern's
-`PATTERN.md`, then read `refs/README.md` and inspect reference images only when
-visual calibration matters. Do not default every X cover to
-`big-character-poster`; use it when the article needs a dominant headline and
-sharp conflict. Seed patterns with operator-selected refs are allowed in
-production when they fit the article, but record the choice in `visual.md` and
-inspect results carefully.
-
-Open Visual Grammar now uses an agent-first harness:
+`sorrycode-content/index.json` now points both zh/en context-management entries
+to:
 
 ```text
-CATALOG.md -> registry/<artifact-kind>.md -> patterns/<pattern>/PATTERN.md -> adapter/runtime/grammar as needed
+articles/agent-infra/context-management/cover.png
 ```
 
-For GanFan article covers, route through:
+Keep the earlier correction in force for future cover work:
+
+- the problem was not "no text"; the problem was "no fake logo";
+- direct image generation remains the main path;
+- allow a large readable Chinese title and a few labels;
+- forbid fake logos, random seals, watermarks, QR codes, and random emblems;
+- if SorryCode branding is needed, use the official asset as reference or add it
+  after generation;
+- do not make HTML the default creative path.
+
+Official SorryCode logo assets:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/CATALOG.md
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/registry/image-cover.md
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode/frontend/public/logo.svg
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode/frontend/public/logo.png
 ```
 
-Do not ask agents to browse all of `patterns/`, `grammar/`, or `runtimes/`.
-The registry owns routing; the pattern owns visual method; runtimes own
-execution contracts; grammar owns shared vocabulary.
+HTML/CSS overlays may be used only as final deterministic cleanup for text or
+brand placement, not as the main image-generation strategy.
 
-Typography / deterministic HTML note:
+## Related Repositories
+
+### sorrycode-content
+
+Path:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/docs/typography-contract-handoff.md
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-content
 ```
 
-This handoff is a real next architecture topic from MyPromptist. It should not
-be treated as dirty worktree noise. The issue is that font is part of visual
-identity and deterministic delivery, especially for HTML / Typst / PDF outputs.
-Do not solve this inside GanFan media ops. OVG now has the architecture pieces:
+Purpose:
 
 ```text
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/grammar/typography.md
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/runtimes/font-packaging.md
-/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/registry/deterministic-layout.md
+Public, reviewed, hot-updatable SorryCode article content.
 ```
 
-MP should not treat the current `print-menu-layout` font-family candidates as
-approved production assets. The operator has not reviewed typography samples
-yet. MP may use the deterministic-layout registry to understand the route, but
-real consumption needs a font review pass first: render PNG/PDF samples for
-each style direction, review visual taste and readability, then approve or
-replace the font families. OVG should not vendor font files; consuming projects
-own actual font packages, license files, hashes, and runtime paths after
-approval.
-
-Small regression pass:
+Current known dirty state at handoff time:
 
 ```text
-articles/2026-05-12-agent-context-token-economics/_work/visual-runs/2026-05-15-design-language-v2-subagent/review.html
+M index.json
+?? articles/agent-infra/context-management/cover-option-1.png
+?? articles/agent-infra/context-management/cover-option-2.png
+?? articles/agent-infra/context-management/cover-option-3.png
+?? articles/agent-infra/context-management/cover.png
+?? articles/platform/ai-cost-basics/cover.png
 ```
 
-Operator judgment: this batch was clearly better. The correction worked because
-`big-character-poster` was reframed as a design language and meta-prompt
-protocol, not a production SOP. The next visual test should expand cautiously
-to two or three historical topics, while preserving the source-contract rule
-and allowing the agent to choose evidence object, title relationship, poster
-temperament, metaphor distance, and material language.
+Do not clean this repo from `ganfan-media` without first reviewing what should
+be published or discarded.
 
-Second stability pass:
+### sorrycode
+
+Path:
 
 ```text
-articles/2026-05-09-codex-api-mode-plugins/_work/visual-runs/2026-05-15-big-character-stability/review.html
-articles/2026-05-10-codex-history-sessions/_work/visual-runs/2026-05-15-big-character-stability/review.html
-articles/2026-05-11-claude-code-gpt-cost/_work/visual-runs/2026-05-15-big-character-stability/review.html
+/Users/zejiawu/Projects/Project-Atlas/labs/sorrycode
 ```
 
-Operator judgment: the framework is stable enough to treat
-`big-character-poster` as v1 for GanFan / SorryCode X covers. Keep improving
-examples and adapter notes through real production, but do not redesign the
-architecture unless repeated production failures show the same root cause.
-
-Known issue from the second pass: one `codex-history-sessions` candidate needed
-cropping / size correction. Treat this as a runtime/export quality-gate issue,
-not a visual grammar failure.
-
-### X Article cover ratio
-
-X Article cover requires `5:2`. Use exact final export:
+Purpose:
 
 ```text
-1500x600
+Product site, docs renderer, navigation, cache and permission boundary, current
+logo/brand assets, historical docs references.
 ```
 
-Do not generate a `1536x1024` source and crop it for big-character posters. That causes severe text cropping. The media skill and size table were updated to request `1500x600` first for X Article covers.
-
-Relevant files:
+Useful architecture reference:
 
 ```text
-skills/ganfan-article-illustrator/references/channel-image-sizes.md
-skills/ganfan-article-illustrator/SKILL.md
+docs/architecture/public-docs-architecture.md
 ```
 
-### Cover asset policy
+### open-visual-grammar
 
-Keep the publish-facing asset surface simple:
+Path:
 
 ```text
-assets/cover.png
-assets/inline-01.png
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar
 ```
 
-Use `visual.md` as the visual decision source of truth. Put runtime prompts,
-diagnostics, rejected images, and temporary work under:
+Purpose:
 
 ```text
-_work/visual-runs/<run-id>/
+Agent-first visual methodology: registry, patterns, grammar, and runtimes for
+image covers, deterministic layout, shader/video directions, and future visual
+systems.
 ```
 
-`articles/**/_work/` is ignored by git.
+Current status: clean at handoff time.
 
-Run `scripts/validate-visual-structure.sh` before committing visual workflow or
-article asset changes.
+### sorrycode-image2
 
-### `sorrycode-image2` runtime boundary
-
-`sorrycode-image2` is maintained by us at:
+Path:
 
 ```text
 /Users/zejiawu/Projects/Project-Atlas/labs/sorrycode-image2
 ```
 
-It has been adjusted into a pure SorryCode Images API runtime driver.
-
-Current boundary:
-
-- `open-visual-grammar` owns visual methodology, patterns, scores, adapters, and
-  evals.
-- `ganfan-media` owns article-specific briefs, `visual.md`, runtime run records,
-  selected assets, and operator choices.
-- `sorrycode-image2` owns API key checks, endpoint/model/size/stream handling,
-  request execution, saved images, and diagnostics.
-
-`sorrycode-image2` now supports:
-
-```bash
---no-prompt-log
-```
-
-Use this flag from GanFan visual runs whenever the workflow already has:
+Purpose:
 
 ```text
-runtime-prompt.md
+Public skill that teaches agents how to call SorryCode Images API.
 ```
 
-Standalone `sorrycode-image2` runs can still write `prompt.txt`; article visual
-runs should not.
-
-Do not restore prompt teaching files such as:
+Important boundary:
 
 ```text
-references/prompt-patterns.md
+sorrycode-image2 is a runtime driver. It should not teach visual style or prompt
+methodology. OVG owns visual method; sorrycode-image2 owns API execution.
 ```
 
-The skill can document API parameters and placeholder command syntax such as
-`--prompt "<image prompt>"`, but it must not teach cover styles, product hero
-prompts, poster formulas, or reusable visual patterns.
+### mypromptist
 
-Public story:
+Path:
 
 ```text
-Open Visual Grammar teaches agents how to think visually.
-SorryCode Image2 executes the image runtime through SorryCode.
+/Users/zejiawu/Projects/Project-Atlas/labs/mypromptist
 ```
 
-### Agent Tips block policy
-
-Only add the SorryCode “copy Markdown to agent” Tips block when an agent can actually execute, configure, edit files, or inspect the local environment.
-
-Do not add that block to tutorials where the user must manually choose from a picker, copy a session id, read a concept, or make a judgment call. The `codex-history` tutorial deliberately does not have that Tips block.
-
-Relevant files:
+Purpose:
 
 ```text
-docs/workflows/media-operations-workflow.md
-docs/strategy/sorrycode-content-funnel-v1.md
+Consumer product/workflow that needs OVG for deterministic HTML design delivery.
 ```
 
-### X research SOP
-
-`docs/workflows/media-operations-workflow.md` now includes an X / browser field research subsection under Sources.
-
-Rules:
-
-- use Chrome or Computer Use read-only for public X timeline/search/list inspection;
-- do not like, repost, reply, publish, follow, DM, or change account state during research;
-- do not inspect cookies, local storage, DMs, browser profiles, or private account data;
-- record X posts as discussion signal in `sources.md`;
-- use official docs / repos / release notes for factual claims whenever possible.
-
-### `npx --yes` policy
-
-For beginner-facing docs, prefer:
-
-```bash
-npx --yes package@latest command
-```
-
-`npx` temporarily runs the npm package without adding it to the user’s project. `--yes` skips npm’s confirmation prompt. For `codex-history`, use explicit `list`:
-
-```bash
-npx --yes codex-history@latest list
-```
-
-This is clearer than relying on the default command.
-
-## Publishing automation note
-
-`ganfan-distribution-agent` can fill X Article cover, title, and content, but preview-readiness detection can lag. If the UI visibly succeeds but automation waits, operator manual completion is acceptable. Record this in `publish.md` rather than blocking.
-
-Default X automation uses dedicated Chrome profile:
+Related handoff:
 
 ```text
-.runtime/opencli/browser-profile
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/docs/typography-contract-handoff.md
 ```
 
-Do not assume daily Chrome can be controlled.
+Font discussion state:
 
-## Git state warning
+- MP needs user-selectable font combinations, not one fixed answer.
+- OVG should preserve design methodology and font taste, but deterministic
+  product decisions belong in MP.
+- The user selected several promising directions during visual review, but MP's
+  agent should continue the product-specific implementation.
 
-At handoff time, `ganfan-media` has a large uncommitted migration/refactor state. It includes:
+### codex-history
 
-- `publications/` renamed to `articles/`;
-- `distribution/` renamed to `channels/`;
-- article package layout flattened;
-- media workflow refactor;
-- codex-history article package and cover assets;
-- distribution-agent path/profile updates;
-- active skill cleanup and archived old style files.
+Path:
 
-Before committing, inspect with:
-
-```bash
-git status --short
-git diff --stat
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/codex-history
 ```
 
-Commit as coherent operational units if possible. Do not commit `.runtime`, secrets, cookies, browser profiles, or process-only `_work` folders.
+Public repo:
 
-## Next session checklist
+```text
+https://github.com/leozejia/codex-history
+```
 
-1. Start in `ganfan-media`.
-2. Read `AGENTS.md` and `docs/workflows/media-operations-workflow.md`.
-3. Read this handoff.
-4. Read `docs/strategy/ai-literacy-ambassador-plan-v1.md` before selecting the next tutorial topic.
-5. If X Article URLs are not provided, ask the user for them, then update:
-   - `articles/2026-05-09-codex-api-mode-plugins/publish.md`
-   - `articles/2026-05-10-codex-history-sessions/publish.md`
-6. If preparing SorryCode content migration, inspect `labs/sorrycode-content` and `labs/sorrycode/docs/architecture/public-docs-architecture.md` first.
-7. Keep public docs beginner-first, but only use agent-first instructions when agent execution genuinely helps.
+Purpose:
+
+```text
+Open-source tool for listing, searching, resuming, and forking local Codex
+sessions.
+```
+
+Do not commit unrelated untracked files there unless the user explicitly asks.
+
+## User Preferences To Preserve
+
+- The user strongly dislikes generic AI prose. Drafts need stance, compression,
+  conflict, and real operational examples.
+- Do not dump all discussion details into the public article. Keep the public
+  piece focused on the one useful point.
+- Avoid "not X but Y" filler. State the precise rule directly.
+- Avoid patch-like anti-rules unless a stable pattern clearly needs them.
+- Do not over-design repository structures before the user agrees.
+- For visuals, the user judges by both design quality and content expression.
+  Stable style is not enough; the cover must carry the article's argument.
+- For image covers, show results, not long prompt explanations, unless the user
+  asks for prompt/method analysis.
+- For X Article automation, preview first. Direct submit only when explicitly
+  requested.
+
+## Next Best Actions
+
+1. If continuing media operations, confirm whether `AI 明明没写几个字，为什么账单这么贵？` should be published from preview or revised first.
+2. If continuing visuals, redo the `context-management` SorryCode docs cover by
+   direct generation, with text allowed and fake logos forbidden.
+3. If cleaning publishing records, ask the user for missing X URLs for already
+   published articles and update each `publish.md`.
+4. If committing, keep coherent units separate:
+   - media strategy + AI billing package;
+   - SorryCode content docs / covers;
+   - OVG workflow updates;
+   - image2 runtime-skill updates.
