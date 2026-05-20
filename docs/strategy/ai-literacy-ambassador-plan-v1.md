@@ -1,6 +1,6 @@
 # AI Literacy Ambassador Plan v1
 
-Updated: 2026-05-16
+Updated: 2026-05-20
 
 ## Role
 
@@ -22,6 +22,181 @@ Good X posts come from a real contradiction:
 - a feature is technically possible, but not the default beginner path.
 
 The public lesson should be independent. The SorryCode link is only a path to a cleaner, complete guide.
+
+## Next Narrative Layer
+
+Status: entered on 2026-05-20 after the gateway transparency arc.
+
+The gateway series answered:
+
+```text
+你怎么知道自己没有被黑箱骗？
+```
+
+The next agent series should answer a larger beginner question before it talks
+about `AGENTS.md`, `CLAUDE.md`, cache, or token efficiency:
+
+```text
+你烧 token 到底是为了什么？
+```
+
+Most beginner users do not have a token-efficiency problem first. They have an
+imagination problem. They do not know what AI can do for them, so they reduce AI
+to a chat box:
+
+```text
+问一个问题 -> 等一个回答 -> 不满意 -> 再问一次
+```
+
+This is a very expensive and very narrow way to use AI. It burns token, but it
+does not necessarily create leverage.
+
+The next content arc should therefore start one layer above token economics:
+
+```text
+AI 不是更会聊天的搜索框。
+AI 是把想法、资料、规则、流程、文件、代码、设计、检查、交接和执行串起来的工作界面。
+```
+
+The hard public question is not "which model is best" or "how do I save token".
+It is:
+
+```text
+你到底想让 AI 帮你改变哪一段工作？
+```
+
+If the user cannot answer that, more token only makes the confusion more
+expensive.
+
+### Operating Thesis
+
+Use this as the bridge from beginner imagination to agent infrastructure:
+
+```text
+Token 不是战力值。Token 是把上下文搬进模型的成本。
+真正值得烧 token 的地方，是把一个模糊想法变成更清楚的判断、更稳定的文件、更少重复解释的流程，或者一个能交付的结果。
+```
+
+This gives the series a sharper order:
+
+1. Why use AI at all: what can it do beyond chatting?
+2. What counts as useful output: not a longer answer, but a decision, artifact,
+   workflow, diagnosis, file, test, plan, or handoff.
+3. Why token gets wasted: repeated context moving, vague goals, no durable
+   project memory, no acceptance criteria.
+4. How agent work becomes efficient: `AGENTS.md`, `CLAUDE.md`, handoffs, briefs,
+   cache, reusable workflows, and project files.
+
+### Demand Description Is The New Bottleneck
+
+The beginner bottleneck is not only lack of programming skill. It is often the
+ability to notice, summarize, and describe a real problem.
+
+Many users can mechanically execute instructions, but they cannot yet say:
+
+```text
+我身边有什么问题？
+这个问题卡在哪里？
+我想让 AI 交付什么结果？
+什么算做完？
+有哪些环境限制？
+```
+
+This is why "AI can do anything" is not a helpful public explanation. The user
+does not need infinite possibility first. They need a small, concrete problem
+that already exists in their life or work.
+
+Use the product-manager case as an internal anchor:
+
+```text
+Non-technical operator, no programming background.
+Real workplace problem: multiple headless Windows PCs in stores needed central
+view/control because existing remote tools were either single-screen, paid, or
+fragile under poor network verification.
+Action: used SorryCode to connect Codex, described the concrete workflow, and
+iterated a small custom tool in three versions over about three hours.
+Lesson: the important leap was not "learn programming"; it was finding a real
+workflow pain, describing constraints, and letting the agent turn that into a
+small tool.
+```
+
+Public version should avoid internal store details unless approved. The safe
+teaching version:
+
+```text
+一个不会编程的人，发现身边有一个重复、具体、现成工具又不好用的问题。
+他没有先学编程，而是把场景、限制、想要的界面和验收标准说清楚，让 AI 做了一个小工具。
+```
+
+This should shape the entrance article:
+
+```text
+AI 的门槛正在从「会不会写代码」，变成「会不会描述问题」。
+```
+
+The best beginner call-to-action is not "go build an app". It is:
+
+```text
+先找一个你每天都在忍的小问题。
+写清楚：现在怎么做、哪里难受、你希望它变成什么样、什么算成功。
+```
+
+This also gives SorryCode a more concrete public explanation:
+
+```text
+SorryCode 不是让每个人变成程序员。
+它是让不会编程的人，也能把自己说得清楚的问题，交给 agent 做成一个小工具、小流程或小文档。
+```
+
+### Beginner Translation
+
+When a beginner asks "SorryCode 是干什么的", do not start from API, model,
+gateway, token, cache, or agent runtime.
+
+Start from capability:
+
+```text
+它帮你把 AI 从聊天窗口，变成能做事的工作台。
+```
+
+Then make it concrete:
+
+```text
+你可以让 AI 读项目、改文件、写文档、生成图片、排查问题、整理资料、搭工作流。
+关键不是它能不能回答你一句话，而是它能不能接住一件事，并把结果留在你的文件里。
+```
+
+Avoid calling beginners stupid in public copy. The private diagnosis is that
+beginners lack imagination and project context. The public framing should be:
+
+```text
+不是你不会用 AI，是大多数 AI 产品把它包装成了聊天框，所以你很难想象它还能做什么。
+```
+
+### Candidate Entrance Piece
+
+Working title:
+
+```text
+你烧那么多 token，到底想让 AI 替你做什么？
+```
+
+Alternative hooks:
+
+```text
+你以为在和 AI 聊天，其实是在替它反复搬家
+AI 不是聊天框，是工作台
+别把 AI 用成一个昂贵的问答窗口
+```
+
+Core public promise:
+
+```text
+先别急着省 token。先想清楚：你用 AI 是为了得到一个回答，还是为了推进一件事？
+```
+
+This piece should precede the more tactical articles about `AGENTS.md`,
+`CLAUDE.md`, cache, and context management.
 
 ## Traffic Reality
 
