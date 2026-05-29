@@ -19,6 +19,18 @@ A candidate can move to `open-visual-grammar/patterns/` only when it has:
 
 ## Candidates
 
+### Whiteboard tiny worker sketch
+
+Status: promoted to Open Visual Grammar as a seed pattern.
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/whiteboard-operator-sketch/PATTERN.md
+```
+
+GanFan no longer maintains this style definition here. Use Open Visual Grammar
+as the source of truth, and record only article-specific usage in each
+package's `visual.md`.
+
 ### Documentation hero
 
 Use when a public docs page or tutorial needs a calm, trustworthy visual that

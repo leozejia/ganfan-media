@@ -170,6 +170,54 @@ Selected because they best show:
 
 ## Additional Operator Judgment
 
+### External source: `ian-xiaohei-illustrations`
+
+Source:
+
+```text
+https://github.com/helloianneo/ian-xiaohei-illustrations
+```
+
+Status:
+
+```text
+Promoted as an Open Visual Grammar seed pattern. No source images copied.
+```
+
+Pattern:
+
+```text
+/Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar/patterns/whiteboard-operator-sketch/PATTERN.md
+```
+
+What it teaches:
+
+- white-background handdrawn body illustrations can make technical ideas feel
+  approachable without turning into a SaaS banner;
+- a tiny non-human worker can provide human scale for abstract agent, workflow,
+  token, and context topics;
+- the useful unit is a low-tech physical action, not a formal explainer:
+  hook, pull, stuff, weigh, guard, connect, repair, press, ferment, or return;
+- sparse Chinese labels are useful when they name objects, warnings, paths, or
+  system states, not when they carry the whole explanation;
+- imperfection and whitespace are part of the visual method, not defects to
+  over-polish.
+
+What it does not prove:
+
+- it does not make the source protagonist, raw source images, signatures, or
+  repo assets reusable as GanFan brand material;
+- it does not remove the need for attribution when using this visual lineage;
+- it does not replace `big-character-poster` for X covers;
+- it does not prove the pattern works for serious risk, pricing, or expose
+  pieces.
+
+Promotion boundary:
+
+Do not copy source media into OVG. The seed pattern contains only public-safe
+method learning. Future reference images must come from independent GanFan /
+SorryCode production outputs approved by the operator.
+
 ### `whimsical-journal-sketch`
 
 Review entry:

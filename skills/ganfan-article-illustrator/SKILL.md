@@ -17,6 +17,12 @@ patterns belong to:
 /Users/zejiawu/Projects/Project-Atlas/labs/open-visual-grammar
 ```
 
+Open Visual Grammar is the only source of truth for reusable visual style
+definitions. GanFan article packages may record selected patterns and
+article-specific decisions in `visual.md`, but runtime prompts, old
+`_work/visual-runs/` folders, and local incubation notes are not canonical style
+definitions.
+
 It decides:
 
 1. whether an image is worth making;
@@ -176,6 +182,11 @@ Useful seed patterns with operator-selected refs:
   pieces with a lighter, more approachable tone.
 - `patterns/minimal-handdrawn-linework/PATTERN.md` for quiet concept
   illustrations where clean linework and one clear relation can carry the idea.
+- `patterns/whiteboard-operator-sketch/PATTERN.md` for white-background
+  tiny-worker body illustrations, docs body images, WeChat inline teaching
+  images, agent workflows, and token/context metaphors. Use it as a low-tech
+  physical action scene, not as a formal explainer diagram. The protagonist is
+  a replaceable worker species; do not copy an external mascot as GanFan IP.
 
 Seed patterns are allowed in production when they fit the article, but record
 the choice in `visual.md` and inspect the result more carefully. Real production
